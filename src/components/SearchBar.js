@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 const SearchBar = () => {
   const [currentInputField, setInputField] = useState('')
   const navigate = useNavigate();
-  const SearchBarClick = () => {
-    console.log(currentInputField)
-    return(navigate('/signup', {state:{input: currentInputField.toUpperCase()}}));
+
+  const SearchBarClick = (inputId) => {
+    console.log(inputId)
+    (navigate(`/shop/search/${inputId}`))
+    // return(navigate(`/shop/${currentInputField}`, {state:{input: currentInputField.toUpperCase()}}));
   }
   const SearchBarInfo = (e) => {
     setInputField(e.target.value);
@@ -15,7 +17,7 @@ const SearchBar = () => {
   return (
     <Search>
       <SearchInput type="text" placeholder="Search" onChange={SearchBarInfo} />
-      <SearchButton onClick={() => SearchBarClick()} type="submit">SEARCH</SearchButton>
+      <SearchButton onClick={() => SearchBarClick(currentInputField)} type="submit">SEARCH</SearchButton>
     </Search>
   )
 }

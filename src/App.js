@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import SingleProduct from './pages/SingleProduct';
 import ScrollToTop from './components/ScrollToTop';
 import SearchBar from './components/SearchBar';
+import SearchResults from './pages/SearchResults';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/sell" element={<Sell />}/>
             <Route path="/shop" element={<Shop />}/>
             <Route path="/shop/:productId" element={<SingleProduct />}/>
+            <Route path="/shop/search/:inputId" element={<SearchResults/>}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<SignUp />}/>
           </Route>

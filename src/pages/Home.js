@@ -19,6 +19,7 @@ const RecentlyStyledContainer = styled.div`
   flex-direction: row;
   flex-flow: wrap;
   margin-left: 1rem;
+  margin: 0 auto;
 `
 
 const Home = () => {
