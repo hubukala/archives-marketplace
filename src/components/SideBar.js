@@ -9,7 +9,6 @@ const SideBar = (props) => {
       <SideBarButton onClick={props.bottoms}>BOTTOMS</SideBarButton>
       <SideBarButton onClick={props.sneakers}>SNEAKERS</SideBarButton>
       <SideBarButton onClick={props.accessories}>ACCESSORIES</SideBarButton>
-      <SideBarButton onClick={props.margiela}>MARGIELA</SideBarButton>
     </SideBarStyle>
   )
 }
