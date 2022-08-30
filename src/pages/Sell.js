@@ -29,7 +29,7 @@ const InputTextArea = styled.textarea`
   padding-left: 8px;
 `
 
-const EventForm = () => {
+const SellForm = () => {
   return (
     <div>
       <form action="">
@@ -70,7 +70,7 @@ const Sell = () => {
   return (
     <Section>
       <h1>Add a new listing</h1>
-      <EventForm />
+      <SellForm />
     </Section>
   );
 };

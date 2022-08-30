@@ -1,5 +1,4 @@
 import './App.css';
-//import styled from 'styled-components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SharedLayout from './shared/SharedLayout';
 import Home from './pages/Home';
@@ -9,7 +8,6 @@ import Shop from './pages/Shop';
 import Login from './pages/Login';
 import SingleProduct from './pages/SingleProduct';
 import ScrollToTop from './components/ScrollToTop';
-import SearchBar from './components/SearchBar';
 import SearchResults from './pages/SearchResults';
 
 function App() {

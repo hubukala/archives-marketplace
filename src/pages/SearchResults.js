@@ -2,21 +2,8 @@ import { useParams } from 'react-router-dom';
 import ProductList from "../data/ProductList.json"
 import MappingArray from '../shared/MapArray';
 import HomeSection from "../styles/HomeSection";
-
-import styled from 'styled-components';
-
-const HeadTwo = styled.h2`
-  margin-left: 2rem;
-`
-
-const RecentlyStyledContainer = styled.div`
-  width: 90%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
-  margin-left: 1rem;
-`
+import { HeadTwo } from '../styles/HeadTwo';
+import { ProductListContainer } from '../styles/ProductListContainer';
 
 const SearchResults = () => {
     const {inputId} = useParams();
@@ -25,9 +12,9 @@ const SearchResults = () => {
     return (
         <HomeSection>
             <HeadTwo>Search results for '{inputId}'</HeadTwo>
-            <RecentlyStyledContainer>
+            <ProductListContainer>
                 {displayArray}
-            </RecentlyStyledContainer>
+            </ProductListContainer>
         </HomeSection>
     )
 }

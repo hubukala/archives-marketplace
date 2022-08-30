@@ -1,9 +1,10 @@
 import { Section } from "../styles/Section";
+import LoginPopup from "../components/LoginPopup";
 
 const Login = () => {
   return (
     <Section>
-      <h2>login page</h2>
+      <LoginPopup />
     </Section>
   );
 };
