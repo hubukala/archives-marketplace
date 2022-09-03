@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 const ButtonSecondary = styled.button`
-  margin-left: auto;
-  margin-right: 0;
   height: 34px;
   font-size: 12px;
   font-weight: bold;
