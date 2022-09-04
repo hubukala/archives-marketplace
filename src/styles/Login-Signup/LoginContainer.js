@@ -8,7 +8,7 @@ const LoginContainer = styled.div`
     justify-content: center;
     align-items: center;
     width: 400px;
-    height: 400px;
+    height: 450px;
     top: 50%;
     left: 50%;
     margin-top: -200px;
