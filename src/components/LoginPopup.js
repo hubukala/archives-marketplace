@@ -1,4 +1,5 @@
 import { ButtonSecondary } from "../styles/ButtonSecondary";
+import { ButtonPrimary } from "../styles/ButtonPrimary";
 import { BackgroundContainer } from "../styles/Login-Signup/BackgroundContainer";
 import { LoginContainer } from "../styles/Login-Signup/LoginContainer";
 import { LoginWrapper } from "../styles/Login-Signup/LoginWrapper";
@@ -11,17 +12,18 @@ const LoginPopup = ({ showLogin, setShowLogin }) => {
     return (
         <div>
             { showLogin ?
-                <BackgroundContainer onClick={() => setShowLogin (prev => !prev)}>
-                    <LoginContainer>
+                <BackgroundContainer>
+                    <LoginContainer showLogin={showLogin}>
                         <LoginWrapper>
                             <LoginForm action="">
                                 <h1>Sign in</h1>
-                                <Description>To post your item for sale or make a purchase</Description>
+                                <Description>To post your item for sale or make a purchase.</Description>
                                 <LoginLabel htmlFor="">Username</LoginLabel> <br />
-                                <LoginInput type="text" name="username" /> <br />
+                                <LoginInput type="email" name="username" /> <br />
                                 <LoginLabel htmlFor="">Password</LoginLabel> <br />
-                                <LoginInput type="text" name="password" /> <br />
+                                <LoginInput type="password" name="password" /> <br />
                                 <ButtonSecondary>LOGIN</ButtonSecondary>
+                                <ButtonPrimary onClick={() => setShowLogin (prev => !prev)}>CLOSE</ButtonPrimary>
                             </LoginForm>
                         </LoginWrapper>
                     </LoginContainer>
