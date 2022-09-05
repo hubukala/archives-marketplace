@@ -6,7 +6,8 @@ const ButtonPrimary = styled.button`
   font-weight: bold;
   border: 1px solid #c5c5c5;
   background-color: white;
-  margin: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
   transition: all 0.3s;
   &:hover {
       background-color: #e7e7e7;

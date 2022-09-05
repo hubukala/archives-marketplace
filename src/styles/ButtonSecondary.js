@@ -8,7 +8,8 @@ const ButtonSecondary = styled.button`
   background-color: #212121;
   transition: all 0.3s;
   color: #ededed;
-  margin: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
   &:hover {
       background-color: #3c3c3c;
       border: 1px solid blue;
