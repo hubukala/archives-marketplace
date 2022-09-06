@@ -8,8 +8,8 @@ import { LoginForm } from "../styles/Login-Signup/LoginForm";
 import { LoginLabel } from "../styles/Login-Signup/LoginLabel";
 import { LoginInput } from "../styles/Login-Signup/LoginInput";
 import { Description } from "../styles/Login-Signup/Description";
-import { app } from "../firebaseConfig";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import app from "../firebaseConfig"
 
 const SignUpPopup = ({ showSignUp, setShowSignUp }) => {
     let auth = getAuth();
@@ -29,6 +29,7 @@ const SignUpPopup = ({ showSignUp, setShowSignUp }) => {
             })
             .catch((err) => {
                 alert(err.message)
+                setShowSignUp (prev => !prev)
             });
     };
     return (
@@ -40,7 +41,7 @@ const SignUpPopup = ({ showSignUp, setShowSignUp }) => {
                             <LoginForm action="javascript:void(0);">
                                 <h1>Sign up</h1>
                                 <Description>Create account to get full access to buying and selling.</Description>
-                                <LoginLabel htmlFor="">E-mail adress (Username)</LoginLabel> <br />
+                                <LoginLabel htmlFor="">E-mail adress (username)</LoginLabel> <br />
                                 <LoginInput 
                                     type="email" 
                                     name="email"
@@ -52,8 +53,6 @@ const SignUpPopup = ({ showSignUp, setShowSignUp }) => {
                                     name="password"
                                     onChange={event => handleInputs(event)}
                                 /> <br />
-                                {/* <LoginLabel htmlFor="">Confirm Password</LoginLabel> <br />
-                                <LoginInput type="text" name="password" /> <br /> */}
                                 <ButtonSecondary onClick={submitData}>SIGN UP</ButtonSecondary>
                                 <ButtonPrimary onClick={() => setShowSignUp (prev => !prev)}>CLOSE</ButtonPrimary>
                             </LoginForm>

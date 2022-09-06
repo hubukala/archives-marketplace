@@ -10,6 +10,7 @@ import { ButtonSecondary } from "../styles/ButtonSecondary";
 const StyledNavbar = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(false)
 
   const openLogin = () => {
     setShowLogin(prev => !prev);
@@ -38,14 +39,27 @@ const StyledNavbar = () => {
         >
           SHOP
         </Links>
-        <ButtonPrimary onClick={openLogin}>
-          LOGIN
-        </ButtonPrimary>
-        <ButtonSecondary onClick={openSignUp}>
-          SIGN UP
-        </ButtonSecondary>
+
+        { !isSignedIn ?
+          <div>
+            <ButtonPrimary onClick={openLogin}>
+              LOGIN
+            </ButtonPrimary>
+            <ButtonSecondary onClick={openSignUp}>
+              SIGN UP
+            </ButtonSecondary> 
+          </div>
+        : <div>
+            <ButtonPrimary>
+              PROFILE
+            </ButtonPrimary>
+            <ButtonSecondary onClick={() => {setIsSignedIn(false)}}>
+              SIGN OUT
+            </ButtonSecondary>
+          </div>
+        }
       </Navbar>
-      <LoginPopup showLogin={showLogin} setShowLogin={setShowLogin}/>
+      <LoginPopup showLogin={showLogin} setShowLogin={setShowLogin} isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}/>
       <SignUpPopup showSignUp={showSignUp} setShowSignUp={setShowSignUp}/>
     </div>
   )
