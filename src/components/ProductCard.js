@@ -13,7 +13,6 @@ const ProductCard = (props) => {
       {props.title}<br/>
       {props.size}<br/>
       $ {props.price}<br/>
-      add to fav icon
     </ProductCardStyled>
   )
 }

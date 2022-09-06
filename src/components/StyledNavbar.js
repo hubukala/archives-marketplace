@@ -2,23 +2,25 @@ import { Navbar } from "../styles/Navbar";
 import { Links } from "../styles/Links";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import LoginPopup from "./LoginPopup";
 import SignUpPopup from "./SignUpPopup";
 import { ButtonPrimary } from "../styles/ButtonPrimary";
 import { ButtonSecondary } from "../styles/ButtonSecondary";
 
 const StyledNavbar = () => {
+  const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState(false)
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   const openLogin = () => {
     setShowLogin(prev => !prev);
-  }
+  };
 
   const openSignUp = () => {
     setShowSignUp(prev => !prev);
-  }
+  };
 
   return (
     <div>
@@ -39,7 +41,11 @@ const StyledNavbar = () => {
         >
           SHOP
         </Links>
-
+        <Links
+          to="/profile"
+        >
+          PP
+        </Links>
         { !isSignedIn ?
           <div>
             <ButtonPrimary onClick={openLogin}>
@@ -50,7 +56,7 @@ const StyledNavbar = () => {
             </ButtonSecondary> 
           </div>
         : <div>
-            <ButtonPrimary>
+            <ButtonPrimary onClick={() => navigate("/profile")}>
               PROFILE
             </ButtonPrimary>
             <ButtonSecondary onClick={() => {setIsSignedIn(false)}}>
