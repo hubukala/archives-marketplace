@@ -1,5 +1,5 @@
-import { Search, SearchInput } from '../styles/SearchBarStyles'
-import { ButtonPrimary } from '../styles/ButtonPrimary';
+import { Search, SearchInput } from '../styles/searchbar/SearchBarStyles'
+import { ButtonPrimary } from '../styles/shared/buttons/ButtonPrimary';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 

@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { SideBarButton } from "../styles/SideBarButton";
+import { SideBarButton } from "../styles/sidebar/SideBarButton";
 
 const ProfileContainer = styled.div`
     margin: 4rem;
 `
 
 const ProfileHead = styled.div`
-    padding-bottom: 4rem;
+    padding: 0 2rem 4rem 2rem;
     border-bottom: 1px solid grey;
 `
 
@@ -34,8 +34,7 @@ const ProfilePage = () => {
             </ProfileHead>
             <MainContainer>
                 <ProfileSideBar>
-                    <SideBarButton>DETAILS</SideBarButton>
-                    <SideBarButton>MESSAGES</SideBarButton>
+                    <SideBarButton>ACCOUNT</SideBarButton>
                     <SideBarButton>ABOUT</SideBarButton>
                     <SideBarButton>ORDERS</SideBarButton>
                     <SideBarButton>MY ITEMS</SideBarButton>

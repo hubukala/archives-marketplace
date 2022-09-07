@@ -4,7 +4,7 @@ import HomeSection from "../styles/HomeSection";
 import MappingArray from "../shared/MapArray";
 import { HeadTwo } from "../styles/HeadTwo";
 import { ProductListContainer } from "../styles/ProductListContainer";
-import { ImageFullScreen } from "../styles/ImageFullScreen";
+import { ImageFullScreen } from "../styles/shared/images/ImageFullScreen";
 
 const Home = () => {
   const MappedArray = MappingArray(ProductList);

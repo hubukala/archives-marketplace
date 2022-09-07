@@ -5,8 +5,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginPopup from "./LoginPopup";
 import SignUpPopup from "./SignUpPopup";
-import { ButtonPrimary } from "../styles/ButtonPrimary";
-import { ButtonSecondary } from "../styles/ButtonSecondary";
+import { ButtonPrimary } from "../styles/shared/buttons/ButtonPrimary";
+import { ButtonSecondary } from "../styles/shared/buttons/ButtonSecondary";
 
 const StyledNavbar = () => {
   const navigate = useNavigate();
@@ -40,11 +40,6 @@ const StyledNavbar = () => {
           to="/shop"
         >
           SHOP
-        </Links>
-        <Links
-          to="/profile"
-        >
-          PP
         </Links>
         { !isSignedIn ?
           <div>

@@ -1,5 +1,5 @@
-import { SideBarStyle } from "../styles/SideBarStyle";
-import { SideBarButton } from "../styles/SideBarButton";
+import { SideBarStyle } from "../styles/sidebar/SideBarStyle";
+import { SideBarButton } from "../styles/sidebar/SideBarButton";
 
 const SideBar = (props) => {
   return (

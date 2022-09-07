@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { ButtonSecondary } from "../styles/ButtonSecondary";
-import { ButtonPrimary } from "../styles/ButtonPrimary";
-import { BackgroundContainer } from "../styles/Login-Signup/BackgroundContainer";
-import { LoginContainer } from "../styles/Login-Signup/LoginContainer";
-import { LoginWrapper } from "../styles/Login-Signup/LoginWrapper";
-import { LoginForm } from "../styles/Login-Signup/LoginForm";
-import { LoginLabel } from "../styles/Login-Signup/LoginLabel";
-import { LoginInput } from "../styles/Login-Signup/LoginInput";
-import { Description } from "../styles/Login-Signup/Description";
+import { ButtonSecondary } from "../styles/shared/buttons/ButtonSecondary";
+import { ButtonPrimary } from "../styles/shared/buttons/ButtonPrimary";
+import { BackgroundContainer } from "../styles/login-signup/BackgroundContainer";
+import { LoginContainer } from "../styles/login-signup/LoginContainer";
+import { LoginWrapper } from "../styles/login-signup/LoginWrapper";
+import { LoginForm } from "../styles/login-signup/LoginForm";
+import { LoginLabel } from "../styles/login-signup/LoginLabel";
+import { LoginInput } from "../styles/login-signup/LoginInput";
+import { Description } from "../styles/login-signup/Description";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import app from "../firebaseConfig"
 

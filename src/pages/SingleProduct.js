@@ -4,7 +4,7 @@ import ReactImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import { ProductSection, GallerySection, ProductDescription, ProductDetails, ProductPrice } from '../styles/SingleProductStyles';
 import ButtonProduct from '../components/ButtonProduct';
-import { ButtonSection } from '../styles/ButtonProductStyles';
+import { ButtonSection } from '../styles/shared/buttons/ButtonProductStyles';
 
 const SingleProduct = () => {
     const {productId} = useParams();

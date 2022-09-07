@@ -1,5 +1,5 @@
 import { ProductCardStyled } from "../styles/ProductCardStyled";
-import { ImageThumbnail } from "../styles/ImageThumbnail";
+import { ImageThumbnail } from "../styles/shared/images/ImageThumbnail";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = (props) => {

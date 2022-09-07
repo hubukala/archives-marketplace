@@ -1,4 +1,4 @@
-import { StyledButtonProduct } from "../styles/ButtonProductStyles";
+import { StyledButtonProduct } from "../styles/shared/buttons/ButtonProductStyles";
 
 const ButtonProduct = (props) => {
     return (
