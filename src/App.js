@@ -11,6 +11,7 @@ import ScrollToTop from './components/ScrollToTop';
 import SearchResults from './pages/SearchResults';
 import ProfilePage from './pages/Profile';
 import NotFound from './pages/NotFound';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -25,7 +26,9 @@ function App() {
             <Route path="/shop/search/:inputId" element={<SearchResults/>}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<SignUp />}/>
-            <Route path="/profile" element={<ProfilePage />}/>
+            <Route element={<ProtectedRoute />}>
+              <Route path="/profile" element={<ProfilePage />}/>
+            </Route>
             <Route path="*" element={<NotFound />}/>
           </Route>
         </Routes>
