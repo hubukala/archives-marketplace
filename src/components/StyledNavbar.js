@@ -60,8 +60,8 @@ const StyledNavbar = () => {
           </div>
         }
       </Navbar>
-      <LoginPopup showLogin={showLogin} setShowLogin={setShowLogin} isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}/>
-      <SignUpPopup showSignUp={showSignUp} setShowSignUp={setShowSignUp}/>
+      <LoginPopup showLogin={showLogin} setShowLogin={setShowLogin} isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
+      <SignUpPopup showSignUp={showSignUp} setShowSignUp={setShowSignUp} setShowLogin={setShowLogin} />
     </div>
   )
 };

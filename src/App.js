@@ -20,7 +20,6 @@ function App() {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<Home />}/>
-            <Route path="/sell" element={<Sell />}/>
             <Route path="/shop" element={<Shop />}/>
             <Route path="/shop/:productId" element={<SingleProduct />}/>
             <Route path="/shop/search/:inputId" element={<SearchResults/>}/>
@@ -28,6 +27,7 @@ function App() {
             <Route path="/signup" element={<SignUp />}/>
             <Route element={<ProtectedRoute />}>
               <Route path="/profile" element={<ProfilePage />}/>
+              <Route path="/sell" element={<Sell />}/>
             </Route>
             <Route path="*" element={<NotFound />}/>
           </Route>
