@@ -1,61 +1,11 @@
 import styled from "styled-components";
 import { ButtonSecondary } from "../styles/shared/buttons/ButtonSecondary";
-
-const DetailsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-right: 20px;
-    width: 100%;
-`
-
-const ButtonContainer = styled.div`
-    display: flex;
-    justify-content: left;
-    margin-right: 20px;
-    width: 100%;
-    padding-top: 10px;
-`
-
-const DetailsSection = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-`
-
-const DetailsLabel = styled.label`
-    display: block;
-    color: #4a4a4a;
-    text-indent: 5px;
-    font-size: 12px;
-    margin-bottom: 5px;
-`
-
-const DetailsInput = styled.input`
-    display: block;
-    width: 100%;
-    border: 1px solid grey;
-    height: 2rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    text-indent: 5px;
-    border-radius: 5px;
-    color: black;
-    font-family: 'Helvetica';
-`
-
-const DetailsTextArea = styled.textarea`
-    display: block;
-    width: 100%;
-    border: 1px solid grey;
-    height: 10rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    font-family: 'Helvetica';
-    font-style: italic;
-    text-indent: 5px;
-`
+import { DetailsTextArea } from "../styles/account-details/DetailsTextArea";
+import { DetailsInput } from "../styles/account-details/DetailsInput";
+import { DetailsLabel } from "../styles/account-details/DetailsLabel.js";
+import { DetailsSection } from "../styles/account-details/DetailsSection";
+import { ButtonContainer } from "../styles/account-details/ButtonContainer";
+import { DetailsContainer } from "../styles/account-details/DetailsContainer";
 
 const AccountDetailsForm = () => {
     return(          
