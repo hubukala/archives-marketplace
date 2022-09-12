@@ -1,10 +1,17 @@
 import StyledNavbar from '../components/StyledNavbar';
 import { Outlet } from 'react-router-dom';
 
-const SharedLayout = () => {
+const SharedLayout = ({ showLogin, setShowLogin, showSignUp, setShowSignUp, isSignedIn, setIsSignedIn }) => {
   return (
     <>
-      <StyledNavbar />
+      <StyledNavbar
+        showLogin={showLogin} 
+        setShowLogin={setShowLogin} 
+        showSignUp={showSignUp} 
+        setShowSignUp={setShowSignUp} 
+        isSignedIn={isSignedIn} 
+        setIsSignedIn={setIsSignedIn}
+      />
       <Outlet />
     </>
   );
