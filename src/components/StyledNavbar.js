@@ -18,6 +18,11 @@ const StyledNavbar = ({ showLogin, setShowLogin, showSignUp, setShowSignUp, isSi
     setShowSignUp(prev => !prev);
   };
 
+  const signOut = () => {
+    setIsSignedIn(false)
+    navigate("/")
+  }
+
   return (
     <div>
       <Navbar>
@@ -50,7 +55,7 @@ const StyledNavbar = ({ showLogin, setShowLogin, showSignUp, setShowSignUp, isSi
             <ButtonPrimary onClick={() => navigate("/profile")}>
               PROFILE
             </ButtonPrimary>
-            <ButtonSecondary onClick={() => {setIsSignedIn(false)}}>
+            <ButtonSecondary onClick={signOut}>
               SIGN OUT
             </ButtonSecondary>
           </div>
