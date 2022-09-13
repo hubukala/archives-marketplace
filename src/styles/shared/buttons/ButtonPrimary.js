@@ -11,7 +11,7 @@ const ButtonPrimary = styled.button`
   transition: all 0.3s;
   &:hover {
       background-color: #e7e7e7;
-      border: 1px solid black;
+      border: 1px solid blue;
   }
 `
 
