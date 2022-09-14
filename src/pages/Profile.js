@@ -8,6 +8,8 @@ import { AvatarStyling } from "../styles/profile/AvatarStyling";
 import { getAuth } from "firebase/auth";
 import Avatar from "../assets/images/168732.png"
 import AccountDetailsForm from "../components/AccountDetailsForm";
+import AccountMyItems from "../components/AccountMyItems";
+import AccountOrders from "../components/AccountOrders";
 import { useState } from "react";
 
 const ProfilePage = () => {
@@ -20,6 +22,16 @@ const ProfilePage = () => {
     const changeMain = (btn) => {
         setDisplayMain(btn)
     };
+
+    const renderMain = () => {
+        if (displayMain === 'account') {
+            return <AccountDetailsForm />
+        } else if (displayMain === 'orders') {
+            return <AccountOrders />
+        } else if (displayMain === 'my-items') {
+            return <AccountMyItems />
+        }
+    }
 
     return (
         <ProfileContainer>
@@ -35,7 +47,7 @@ const ProfilePage = () => {
                     <SideBarButton onClick={() => changeMain("my-items")}>MY ITEMS</SideBarButton>
                 </ProfileSideBar>
                 <ProfileMain>
-                    <AccountDetailsForm />
+                    {renderMain()}
                 </ProfileMain>
             </MainContainer>
         </ProfileContainer>
