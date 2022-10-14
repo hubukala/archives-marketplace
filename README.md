@@ -17,5 +17,7 @@ Additional libraries used in this project:
 ![1](https://user-images.githubusercontent.com/73420865/195429639-a249d09c-8fb7-4a12-b6a1-a921253d73b5.png)
 ![2](https://user-images.githubusercontent.com/73420865/195429645-6f40c1d9-75fe-4606-9926-f4746d53bbcc.png)
 ![3](https://user-images.githubusercontent.com/73420865/195429654-c7caa690-3cf0-4306-8170-e284279b24ba.png)
+![6](https://user-images.githubusercontent.com/73420865/195810789-8d8c05b9-1f1a-43b1-bed0-e744b1d89d96.png)
+![7](https://user-images.githubusercontent.com/73420865/195810810-88e8b8b7-8055-4468-8376-974117940fdf.png)
 ![4](https://user-images.githubusercontent.com/73420865/195429665-e35cd371-3e59-4762-b6e0-5b7bcd1c440e.png)
 ![5](https://user-images.githubusercontent.com/73420865/195429668-7bf7252d-08d0-43cd-a410-dc44b0f7f9e3.png)
