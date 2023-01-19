@@ -17,7 +17,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState();
   
   return (
     <BrowserRouter>
