@@ -12,6 +12,7 @@ import ScrollToTop from './components/ScrollToTop';
 import SearchResults from './pages/SearchResults';
 import ProfilePage from './pages/Profile';
 import NotFound from './pages/NotFound';
+import Orders from './pages/Orders';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -44,6 +45,8 @@ function App() {
               />}/>
             <Route element={<ProtectedRoute setShowSignUp={setShowSignUp} />}>
               <Route path="/profile" element={<ProfilePage />}/>
+              <Route path="/profile/orders" element={<Orders />}/>
+              <Route path="/profile/my-items" element={<ProfilePage />}/>
               <Route path="/sell" element={<Sell />}/>
             </Route>
             <Route path="*" element={<NotFound />}/>

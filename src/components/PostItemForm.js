@@ -1,13 +1,28 @@
 import { InputMain, InputSelect, InputTextArea } from "../styles/post-item-form/PostItemFormStyles";
 import { FormContainer } from "../styles/post-item-form/FormContainer";
+import { db } from '../firebaseConfig';
+import { collection, doc, setDoc } from 'firebase/firestore';
+import { getAuth } from "firebase/auth";
 
 const SellForm = () => {
+  const auth = getAuth()
+  // const productsRef = doc(db, 'products');
+  const addProduct = () => {
+    return
+  }
+  console.log(auth)
   return (
     <FormContainer>
       <h1>Add a new listing</h1>
       <form action="">
         <h3>ITEM DETAILS</h3>
-        <InputMain type="text" name="category" placeholder="Category"/>
+        <InputSelect type="text" name="category" placeholder="Category">
+          <option value="" disabled hidden selected>Select category</option>
+          <option value="tops">TOPS</option>
+          <option value="bottoms">BOTTOMS</option>
+          <option value="sneakers">SNEAKERS</option>
+          <option value="accessories">ACCESSORIES</option>
+        </InputSelect>
         <InputMain type="text" name="designer" placeholder="Designer"/>
         <InputMain type="text" name="size" placeholder="Size"/>
         <InputMain type="text" name="item-title" placeholder="Item title"/>
@@ -27,9 +42,9 @@ const SellForm = () => {
         <h3>SHIPPING</h3>
         <InputSelect defaultValue={'DEFAULT'} name="shipping-carrier" id="shipping">
           <option value="DEFAULT" disabled selected hidden>Choose carrier</option>
-          <option value="2">NEW WITH TAGS</option>
-          <option value="3">NEW WITHOUT TAGS</option>
-          <option value="4">PRE-OWNED</option>
+          <option value="dhl">DHL</option>
+          <option value="fedex">FEDEX</option>
+          <option value="ups">UPS</option>
         </InputSelect> <br/>
         <InputMain type="text" name="shipping-price" placeholder="Shipping cost (USD)"/>
         <h3>UPLOAD IMAGES</h3>
