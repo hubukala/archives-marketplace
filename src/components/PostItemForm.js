@@ -7,14 +7,25 @@ import { getAuth } from "firebase/auth";
 const SellForm = () => {
   const auth = getAuth()
   // const productsRef = doc(db, 'products');
-  const addProduct = () => {
-    return
+  // const addProduct = () => {
+  //   return
+  // }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log(event.target.category.value)
+    console.log(event.target.designer.value)
+    console.log(event.target.size.value)
+    console.log(event.target.itemTitle.value)
+    console.log(event.target.color.value)
+    console.log(event.target.condition.value)
+    console.log(event.target.description.value)
+    console.log(event.target.price.value)
+    console.log(event.target.shippingPrice.value)
   }
-  console.log(auth)
   return (
     <FormContainer>
       <h1>Add a new listing</h1>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <h3>ITEM DETAILS</h3>
         <InputSelect type="text" name="category" placeholder="Category">
           <option value="" disabled hidden selected>Select category</option>
@@ -25,7 +36,7 @@ const SellForm = () => {
         </InputSelect>
         <InputMain type="text" name="designer" placeholder="Designer"/>
         <InputMain type="text" name="size" placeholder="Size"/>
-        <InputMain type="text" name="item-title" placeholder="Item title"/>
+        <InputMain type="text" name="itemTitle" placeholder="Item title"/>
         <h3>COLOR</h3>
         <InputMain type="text" name="color" placeholder="Exmaple: 'Light Grey'" />
         <h3>CONDITION</h3>
@@ -46,9 +57,9 @@ const SellForm = () => {
           <option value="fedex">FEDEX</option>
           <option value="ups">UPS</option>
         </InputSelect> <br/>
-        <InputMain type="text" name="shipping-price" placeholder="Shipping cost (USD)"/>
+        <InputMain type="text" name="shippingPrice" placeholder="Shipping cost (USD)"/>
         <h3>UPLOAD IMAGES</h3>
-        <button>select</button>
+        <button type="submit">select</button>
       </form>
     </FormContainer>
   )
