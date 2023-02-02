@@ -3,24 +3,27 @@ import { FormContainer } from "../styles/post-item-form/FormContainer";
 import { db } from '../firebaseConfig';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
+import { uuidv4 } from "@firebase/util";
 
 const SellForm = () => {
   const auth = getAuth()
-  // const productsRef = doc(db, 'products');
-  // const addProduct = () => {
-  //   return
-  // }
+  const productsRef = collection(db, 'products');
+  const uniqueId = uuidv4()
+  
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(event.target.category.value)
-    console.log(event.target.designer.value)
-    console.log(event.target.size.value)
-    console.log(event.target.itemTitle.value)
-    console.log(event.target.color.value)
-    console.log(event.target.condition.value)
-    console.log(event.target.description.value)
-    console.log(event.target.price.value)
-    console.log(event.target.shippingPrice.value)
+    setDoc(doc(productsRef, uniqueId), {
+      user_id: auth.currentUser.uid,
+      product_id: uniqueId,
+      title: event.target.itemTitle.value,
+      description: event.target.description.value,
+      size: event.target.size.value,
+      color: event.target.color.value,
+      designer: event.target.designer.value,
+      category: event.target.category.value, 
+      condition: event.target.condition.value, 
+      price: event.target.price.value, 
+    })
   }
   return (
     <FormContainer>
