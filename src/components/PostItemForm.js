@@ -1,15 +1,18 @@
-import { InputMain, InputSelect, InputTextArea } from "../styles/post-item-form/PostItemFormStyles";
-import { FormContainer } from "../styles/post-item-form/FormContainer";
+import { useState } from "react";
 import { db } from '../firebaseConfig';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
 import { uuidv4 } from "@firebase/util";
+import ItemPostedPopup from "./ItemPostedPopup";
+import { InputMain, InputSelect, InputTextArea } from "../styles/post-item-form/PostItemFormStyles";
+import { FormContainer } from "../styles/post-item-form/FormContainer";
 
 const SellForm = () => {
   const auth = getAuth()
   const productsRef = collection(db, 'products');
   const uniqueId = uuidv4()
-  
+  const [successMessage, setSuccessMessage] = useState(false)
+
   const handleSubmit = (event) => {
     event.preventDefault()
     setDoc(doc(productsRef, uniqueId), {
@@ -24,8 +27,9 @@ const SellForm = () => {
       condition: event.target.condition.value, 
       price: event.target.price.value, 
     })
+    setSuccessMessage(true)
   }
-  return (
+  return (   
     <FormContainer>
       <h1>Add a new listing</h1>
       <form onSubmit={handleSubmit}>
@@ -38,7 +42,7 @@ const SellForm = () => {
           <option value="accessories">ACCESSORIES</option>
         </InputSelect>
         <InputMain type="text" name="designer" placeholder="Designer"/>
-        <InputMain type="text" name="size" placeholder="Size"/>
+        <InputMain type="text" name="size" placeholder="Size on tag"/>
         <InputMain type="text" name="itemTitle" placeholder="Item title"/>
         <h3>COLOR</h3>
         <InputMain type="text" name="color" placeholder="Exmaple: 'Light Grey'" />
@@ -64,6 +68,7 @@ const SellForm = () => {
         <h3>UPLOAD IMAGES</h3>
         <button type="submit">select</button>
       </form>
+      <ItemPostedPopup successMessage={successMessage} setSuccessMessage={setSuccessMessage}/>
     </FormContainer>
   )
 }
