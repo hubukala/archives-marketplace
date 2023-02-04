@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const InputStyles = [`
-  width: 35%;
+  width: 100%;
   border: 1px solid grey;
   height: 2.5rem;
   margin-right: 1rem;
@@ -17,7 +17,7 @@ const InputMain = styled.input(InputStyles);
 const InputSelect = styled.select(InputStyles);
 
 const InputTextArea = styled.textarea`
-  width: 74%;
+  width: 100%;
   border: 1px solid black;
   height: 10rem;
   margin-right: 1rem;
