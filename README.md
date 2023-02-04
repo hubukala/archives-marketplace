@@ -6,6 +6,7 @@ Additional libraries used in this project:
 * styled components
 * react router
 * react image gallery
+* UUID v4
 
 ### To run this project:
 1. clone repo
