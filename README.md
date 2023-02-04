@@ -7,6 +7,8 @@ Additional libraries used in this project:
 * react router
 * react image gallery
 * UUID v4
+* formik
+* yup
 
 ### To run this project:
 1. clone repo
