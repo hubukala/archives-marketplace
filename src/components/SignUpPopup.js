@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { db } from '../firebaseConfig';
+import { collection, doc, setDoc } from "firebase/firestore";
 import { ButtonSecondary } from "../styles/shared/buttons/ButtonSecondary";
 import { ButtonPrimary } from "../styles/shared/buttons/ButtonPrimary";
 import { BackgroundContainer } from "../styles/login-signup/BackgroundContainer";
@@ -9,11 +12,10 @@ import { LoginLabel } from "../styles/login-signup/LoginLabel";
 import { LoginInput } from "../styles/login-signup/LoginInput";
 import { Description } from "../styles/login-signup/Description";
 import { ButtonLoginSmall } from "../styles/login-signup/ButtonLoginSmall";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import app from "../firebaseConfig"
 
 const SignUpPopup = ({ showSignUp, setShowSignUp, setShowLogin }) => {
     let auth = getAuth();
+    const userRef = collection(db, 'users');
     const [data, setData] = useState({});
 
     const toggleModal = (callback) => {
@@ -22,7 +24,6 @@ const SignUpPopup = ({ showSignUp, setShowSignUp, setShowLogin }) => {
 
     const handleInputs = (event) => {
         let inputs = { [event.target.name]: event.target.value }
-
         setData({ ...data, ...inputs })
     };
 
@@ -30,6 +31,10 @@ const SignUpPopup = ({ showSignUp, setShowSignUp, setShowLogin }) => {
         createUserWithEmailAndPassword(auth, data.email, data.password)
             .then((response) => {
                 console.log(response.user)
+                setDoc(doc(userRef, auth.currentUser.uid), {
+                    user_id: auth.currentUser.uid,
+                    email: data.email
+                })
                 setShowSignUp (prev => !prev)
             })
             .catch((err) => {
