@@ -9,6 +9,7 @@ Additional libraries used in this project:
 * UUID v4
 * formik
 * yup
+* universal cookies
 
 ### To run this project:
 1. clone repo
