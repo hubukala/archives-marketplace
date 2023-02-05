@@ -5,7 +5,7 @@ import { ProfileSideBar } from "../styles/profile/ProfileSideBar";
 import { ProfileMain } from "../styles/profile/ProfileMain";
 import { MainContainer } from "../styles/profile/MainContainer";
 import { AvatarStyling } from "../styles/profile/AvatarStyling";
-import { getAuth } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 import Avatar from "../assets/images/168732.png"
 import AccountDetailsForm from "../components/AccountDetailsForm";
 import AccountMyItems from "../components/AccountMyItems";
@@ -13,7 +13,6 @@ import AccountOrders from "../components/AccountOrders";
 import { useState } from "react";
 
 const ProfilePage = () => {
-    const auth = getAuth();
     const userEmail = auth.currentUser.email;
     const userSince = ((auth.currentUser.metadata.creationTime).slice(12, 17));
 

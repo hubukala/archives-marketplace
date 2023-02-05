@@ -1,8 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { getAuth } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 const ProtectedRoute = ({ setShowSignUp }) => {
-    const auth = getAuth();
     console.log(auth.currentUser);
     const toggle = () => {
         setShowSignUp(true)

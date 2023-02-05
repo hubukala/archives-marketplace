@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { db } from '../firebaseConfig';
 import { collection, doc, setDoc } from 'firebase/firestore';
-import { getAuth } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 import { uuidv4 } from "@firebase/util";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import ItemPostedPopup from "./ItemPostedPopup";
 import { InputMain, InputSelect, InputTextArea } from "../styles/post-item-form/PostItemFormStyles";
 import { InputError } from "../styles/post-item-form/InputError";
-import { FormContainer, PostItemForm } from "../styles/post-item-form/FormContainer";
+import { FormContainer } from "../styles/post-item-form/FormContainer";
 
 const SellForm = () => {
-  const auth = getAuth()
   const productsRef = collection(db, 'products');
   const uniqueId = uuidv4()
   const [successMessage, setSuccessMessage] = useState(false)

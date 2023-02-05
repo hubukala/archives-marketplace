@@ -7,12 +7,10 @@ import { DetailsSection } from "../styles/account-details/DetailsSection";
 import { ButtonContainer } from "../styles/account-details/ButtonContainer";
 import { DetailsContainer } from "../styles/account-details/DetailsContainer";
 import { db } from "../firebaseConfig";
-import { collection, addDoc, setDoc, doc, getDocs } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { setDoc, doc } from "firebase/firestore";
+import { auth } from "../firebaseConfig";
 
 const AccountDetailsForm = () => {
-    const auth = getAuth()
-
     const [data, setData] = useState({
         fname: "",
         lname: "",

@@ -7,11 +7,11 @@ import { LoginForm } from "../styles/login-signup/LoginForm";
 import { LoginLabel } from "../styles/login-signup/LoginLabel";
 import { LoginInput } from "../styles/login-signup/LoginInput";
 import { Description } from "../styles/login-signup/Description";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { auth } from "../firebaseConfig";
 
 const LoginPopup = ({ showLogin, setShowLogin, isSignedIn, setIsSignedIn }) => {
-    const auth = getAuth();
     const [data, setData] = useState({
         email: '',
         password:''

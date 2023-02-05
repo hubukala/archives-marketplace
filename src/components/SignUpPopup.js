@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 import { db } from '../firebaseConfig';
 import { collection, doc, setDoc } from "firebase/firestore";
 import { ButtonSecondary } from "../styles/shared/buttons/ButtonSecondary";
@@ -14,7 +15,6 @@ import { Description } from "../styles/login-signup/Description";
 import { ButtonLoginSmall } from "../styles/login-signup/ButtonLoginSmall";
 
 const SignUpPopup = ({ showSignUp, setShowSignUp, setShowLogin }) => {
-    let auth = getAuth();
     const userRef = collection(db, 'users');
     const [data, setData] = useState({});
 
