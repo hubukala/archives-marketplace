@@ -1,13 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { auth } from "../firebaseConfig";
 
-const ProtectedRoute = ({ setShowSignUp }) => {
-    console.log(auth.currentUser);
+const ProtectedRoute = ({ setShowSignUp, isLoggedIn }) => {
     const toggle = () => {
         setShowSignUp(true)
     };
 
-    if (auth.currentUser === null) {
+    if (isLoggedIn === false) {
         toggle();
         return (<Navigate to ="/" />);
     } else {

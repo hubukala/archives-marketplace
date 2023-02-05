@@ -1,3 +1,9 @@
+import { useEffect, useState } from "react";
+import { auth } from "../firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
+import AccountDetailsForm from "../components/AccountDetailsForm";
+import AccountMyItems from "../components/AccountMyItems";
+import AccountOrders from "../components/AccountOrders";
 import { SideBarButton } from "../styles/sidebar/SideBarButton";
 import { ProfileContainer } from "../styles/profile/ProfileContainer";
 import { ProfileHead } from "../styles/profile/ProfileHead";
@@ -5,18 +11,19 @@ import { ProfileSideBar } from "../styles/profile/ProfileSideBar";
 import { ProfileMain } from "../styles/profile/ProfileMain";
 import { MainContainer } from "../styles/profile/MainContainer";
 import { AvatarStyling } from "../styles/profile/AvatarStyling";
-import { auth } from "../firebaseConfig";
 import Avatar from "../assets/images/168732.png"
-import AccountDetailsForm from "../components/AccountDetailsForm";
-import AccountMyItems from "../components/AccountMyItems";
-import AccountOrders from "../components/AccountOrders";
-import { useState } from "react";
 
 const ProfilePage = () => {
-    const userEmail = auth.currentUser.email;
-    const userSince = ((auth.currentUser.metadata.creationTime).slice(12, 17));
-
+    const [signedInUser, setSignedInUser] = useState("")
     const [displayMain, setDisplayMain] = useState("account")
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setSignedInUser(user)
+            }
+        })
+    })
 
     const changeMain = (btn) => {
         setDisplayMain(btn)
@@ -33,23 +40,26 @@ const ProfilePage = () => {
     }
 
     return (
-        <ProfileContainer>
-            <ProfileHead>
-                <AvatarStyling src={Avatar} alt="AV" /> <br />
-                {userEmail} <br />
-                Joined in: {userSince}
-            </ProfileHead>
-            <MainContainer>
-                <ProfileSideBar>
-                    <SideBarButton onClick={() => changeMain("account")}>ACCOUNT</SideBarButton>
-                    <SideBarButton onClick={() => changeMain("orders")}>ORDERS</SideBarButton>
-                    <SideBarButton onClick={() => changeMain("my-items")}>MY ITEMS</SideBarButton>
-                </ProfileSideBar>
-                <ProfileMain>
-                    {renderMain()}
-                </ProfileMain>
-            </MainContainer>
-        </ProfileContainer>
+        <>        
+            {signedInUser === "" ? <h1>loading...</h1> : 
+            <ProfileContainer>
+                <ProfileHead>
+                    <AvatarStyling src={Avatar} alt="AV" /> <br />
+                    {signedInUser.email} <br />
+                    Joined in: {(signedInUser.metadata.creationTime).slice(12, 17)}
+                </ProfileHead>
+                <MainContainer>
+                    <ProfileSideBar>
+                        <SideBarButton onClick={() => changeMain("account")}>ACCOUNT</SideBarButton>
+                        <SideBarButton onClick={() => changeMain("orders")}>ORDERS</SideBarButton>
+                        <SideBarButton onClick={() => changeMain("my-items")}>MY ITEMS</SideBarButton>
+                    </ProfileSideBar>
+                    <ProfileMain>
+                        {renderMain()}
+                    </ProfileMain>
+                </MainContainer>
+            </ProfileContainer>}
+        </>
     )
 }
 

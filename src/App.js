@@ -1,12 +1,13 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { auth } from './firebaseConfig';
+import { onAuthStateChanged } from 'firebase/auth';
 import SharedLayout from './shared/SharedLayout';
 import Home from './pages/Home';
 import Sell from './pages/Sell';
 import SignUp from './pages/Signup';
 import Shop from './pages/Shop';
-import Login from './pages/Login';
 import SingleProduct from './pages/SingleProduct';
 import ScrollToTop from './components/ScrollToTop';
 import SearchResults from './pages/SearchResults';
@@ -19,6 +20,14 @@ function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsSignedIn(true)
+      }
+    })
+  })
   
   return (
     <BrowserRouter>
@@ -43,7 +52,7 @@ function App() {
                 setShowSignUp={setShowSignUp}
                 setShowLogin={setShowLogin}
               />}/>
-            <Route element={<ProtectedRoute setShowSignUp={setShowSignUp} />}>
+            <Route element={<ProtectedRoute setShowSignUp={setShowSignUp} isLoggedIn={isSignedIn} />}>
               <Route path="/profile" element={<ProfilePage />}/>
               <Route path="/profile/orders" element={<Orders />}/>
               <Route path="/profile/my-items" element={<ProfilePage />}/>
