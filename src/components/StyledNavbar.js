@@ -12,10 +12,12 @@ const StyledNavbar = ({ showLogin, setShowLogin, showSignUp, setShowSignUp, isSi
 
   const openLogin = () => {
     setShowLogin(prev => !prev);
+    setShowSignUp(false)
   };
 
   const openSignUp = () => {
     setShowSignUp(prev => !prev);
+    setShowLogin(false)
   };
 
   const signOut = () => {
