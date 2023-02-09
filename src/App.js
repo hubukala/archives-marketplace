@@ -3,18 +3,18 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { auth } from './firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
+import ProtectedRoute from './components/ProtectedRoute';
+import ScrollToTop from './components/ScrollToTop';
 import SharedLayout from './shared/SharedLayout';
 import Home from './pages/Home';
 import Sell from './pages/Sell';
 import SignUp from './pages/Signup';
 import Shop from './pages/Shop';
 import SingleProduct from './pages/SingleProduct';
-import ScrollToTop from './components/ScrollToTop';
 import SearchResults from './pages/SearchResults';
 import ProfilePage from './pages/Profile';
 import NotFound from './pages/NotFound';
 import Orders from './pages/Orders';
-import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
