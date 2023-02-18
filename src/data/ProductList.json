@@ -2,20 +2,7 @@
   {
     "id": "1",
     "category": "Tops",
-    "image": [
-      {
-        "original": "https://cdn-images.farfetch-contents.com/15/64/92/78/15649278_28562424_1000.jpg",
-        "thumbnail": "https://cdn-images.farfetch-contents.com/15/64/92/78/15649278_28562424_1000.jpg"
-      },
-      {
-        "original": "https://cdn-images.farfetch-contents.com/15/64/92/78/15649278_28562426_1000.jpg",
-        "thumbnail": "https://cdn-images.farfetch-contents.com/15/64/92/78/15649278_28562426_1000.jpg"
-      },
-      {
-        "original": "https://cdn-images.farfetch-contents.com/15/64/92/78/15649278_28562427_1000.jpg",
-        "thumbnail": "https://cdn-images.farfetch-contents.com/15/64/92/78/15649278_28562427_1000.jpg"
-      }
-    ],
+    "image": ["https://cdn-images.farfetch-contents.com/15/64/92/78/15649278_28562424_1000.jpg", "https://cdn-images.farfetch-contents.com/15/64/92/78/15649278_28562426_1000.jpg", "https://cdn-images.farfetch-contents.com/15/64/92/78/15649278_28562427_1000.jpg"],
     "title": "CDG LONGSLEEVE",
     "size": "SMALL",
     "condition": "USED",
@@ -24,20 +11,7 @@
   {
     "id": "2",
     "category": "Tops",
-    "image": [
-      {
-        "original": "https://cdn-images.farfetch-contents.com/17/28/23/32/17282332_35674577_1000.jpg",
-        "thumbnail": "https://cdn-images.farfetch-contents.com/17/28/23/32/17282332_35674577_1000.jpg"
-      },
-      {
-        "original": "https://cdn-images.farfetch-contents.com/17/28/23/32/17282332_35674576_1000.jpg",
-        "thumbnail": "https://cdn-images.farfetch-contents.com/17/28/23/32/17282332_35674576_1000.jpg"
-      },
-      {
-        "original": "https://cdn-images.farfetch-contents.com/17/28/23/32/17282332_35674573_1000.jpg",
-        "thumbnail": "https://cdn-images.farfetch-contents.com/17/28/23/32/17282332_35674573_1000.jpg"
-      }
-    ],
+    "image": ["https://cdn-images.farfetch-contents.com/17/28/23/32/17282332_35674577_1000.jpg","https://cdn-images.farfetch-contents.com/17/28/23/32/17282332_35674576_1000.jpg","https://cdn-images.farfetch-contents.com/17/28/23/32/17282332_35674576_1000.jpg", "https://cdn-images.farfetch-contents.com/17/28/23/32/17282332_35674573_1000.jpg"],
     "title": "RAF SIMONS SWEATER",
     "size": "MEDIUM",
     "condition": "NEW",
@@ -46,67 +20,10 @@
   {
     "id": "3",
     "category": "Footwear",
-    "image": [
-      {
-        "original": "https://cdn-images.farfetch-contents.com/12/95/99/11/12959911_13486414_1000.jpg",
-        "thumbnail": "https://cdn-images.farfetch-contents.com/12/95/99/11/12959911_13486414_1000.jpg"
-      },
-      {
-        "original": "https://cdn-images.farfetch-contents.com/12/95/99/11/12959911_13486415_1000.jpg",
-        "thumbnail": "https://cdn-images.farfetch-contents.com/12/95/99/11/12959911_13486415_1000.jpg"
-      },
-      {
-        "original": "https://cdn-images.farfetch-contents.com/12/95/99/11/12959911_13486416_1000.jpg",
-        "thumbnail": "https://cdn-images.farfetch-contents.com/12/95/99/11/12959911_13486416_1000.jpg"
-      }
-    ],
+    "image": ["https://cdn-images.farfetch-contents.com/12/95/99/11/12959911_13486414_1000.jpg","https://cdn-images.farfetch-contents.com/12/95/99/11/12959911_13486415_1000.jpg", "https://cdn-images.farfetch-contents.com/12/95/99/11/12959911_13486416_1000.jpg"],
     "title": "FRAGMENT x NIKE SNEAKERS",
     "size": "42",
     "condition": "USED",
     "price": "490.90"
-  },
-  {
-    "id": "4",
-    "category": "Tops",
-    "image": [
-      {
-        "original": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQzVCS5znqPpVqIR7f92H23w7hYOO7QKB8UsPT3Ot-kj3SlitPVKtv1wt3-zIDJepMRdyGFCzZ7HbjdMtQUukGirkvhNs01ck4Z0N1ipij6tQBs5UIAvKQ2ug",
-        "thumbnail": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQzVCS5znqPpVqIR7f92H23w7hYOO7QKB8UsPT3Ot-kj3SlitPVKtv1wt3-zIDJepMRdyGFCzZ7HbjdMtQUukGirkvhNs01ck4Z0N1ipij6tQBs5UIAvKQ2ug"
-      },
-      {
-        "original": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTDSKXN_-uEShw--0fhwNjv7265Uefy3EA0O3gvnhDdE-QhaJOr9F4gRCRRxt9Vb3QGmgNQfj9ltaGlbgcSdcms6j5appSeuTvXhqivwBBU5CBIH3ELtg8I",
-        "thumbnail": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTDSKXN_-uEShw--0fhwNjv7265Uefy3EA0O3gvnhDdE-QhaJOr9F4gRCRRxt9Vb3QGmgNQfj9ltaGlbgcSdcms6j5appSeuTvXhqivwBBU5CBIH3ELtg8I"
-      },
-      {
-        "original": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTQgjsW5oUO5hWNHTx_uv5SwUv-Gc2sm3_CuJY-EKrR0g-mkvpLK38kfj7wtiStmDnZjJzBc55ugxytDN6OVTFxtkknYJsXXGBsbJqVtVh0AsDGqIN5hoWVXg",
-        "thumbnail": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTQgjsW5oUO5hWNHTx_uv5SwUv-Gc2sm3_CuJY-EKrR0g-mkvpLK38kfj7wtiStmDnZjJzBc55ugxytDN6OVTFxtkknYJsXXGBsbJqVtVh0AsDGqIN5hoWVXg"
-      }
-    ],
-    "title": "HELMUT LANG T-SHIRT",
-    "size": "LARGE",
-    "condition": "New",
-    "price": "290.90"
-  },
-  {
-    "id": "5",
-    "category": "Bottoms",
-    "image": [
-      {
-        "original": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/4/04-02-2022_JG_S30LA0181-S30561-975_1_1.jpg",
-        "thumbnail": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/4/04-02-2022_JG_S30LA0181-S30561-975_1_1.jpg"
-      },
-      {
-        "original": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/4/04-02-2022_JG_S30LA0181-S30561-975_2_1.jpg",
-        "thumbnail": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/4/04-02-2022_JG_S30LA0181-S30561-975_2_1.jpg"
-      },
-      {
-        "original": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/4/04-02-2022_JG_S30LA0181-S30561-975_3_1.jpg",
-        "thumbnail": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/4/04-02-2022_JG_S30LA0181-S30561-975_3_1.jpg"
-      }
-    ],
-    "title": "MAISON MARGIELA PANTS",
-    "size": "30/32",
-    "condition": "USED",
-    "price": "890.90"
   }
 ]

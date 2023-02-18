@@ -1,9 +1,11 @@
 import { auth, db } from "../firebaseConfig"
 import { collection, query, where, getDocs } from "firebase/firestore"
 import { useEffect, useState } from "react"
+import { ProductsContainer } from "../styles/ProductsContainer"
+import ProductCard from "./ProductCard"
 
 const AccountMyItems = () => {
-    const [data, setData] = useState({})
+    const [data, setData] = useState([])
     
     useEffect(() => {
         const fetchData = async () => {
@@ -13,10 +15,21 @@ const AccountMyItems = () => {
             querySnapshot.forEach((doc) => {
                 console.log(doc.id, " => ", doc.data())
                 console.log(doc.data().price)
-                setData({
-                    "price": doc.data().price, 
-                    "category": doc.data().category
-                })
+                setData(currentState => 
+                    [...currentState, 
+                        {
+                            category: doc.data().category,
+                            condition: doc.data().condition,
+                            description: doc.data().description,
+                            designer: doc.data().designer,
+                            image: doc.data().images,
+                            price: doc.data().price,
+                            id: doc.data().product_id,
+                            size: doc.data().size,
+                            title: doc.data().title,
+                        }
+                    ]
+                )
             })
         }
         fetchData()
@@ -24,8 +37,18 @@ const AccountMyItems = () => {
     return (
         <>        
             <h1>My Items</h1>
-            <h1>{data.price}</h1>
-            <h1>{data.category}</h1>
+            <ProductsContainer>
+                {data.map((item) => (
+                    <ProductCard
+                        key={item.id}
+                        id={item.id}
+                        image={item.image}
+                        title={item.title}
+                        size={item.size}
+                        price={item.price}
+                    />
+                ))}
+            </ProductsContainer>
         </>
     )
 }

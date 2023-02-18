@@ -9,7 +9,7 @@ const ProductCard = (props) => {
   }
   return (
     <ProductCardStyled onClick={() => (OpenProductPage(props.id))}>
-      <ImageThumbnail src={props.image[0].original} alt="image"/><br/>
+      <ImageThumbnail src={props.image} alt="image"/><br/>
       {props.title}<br/>
       {props.size}<br/>
       $ {props.price}<br/>
