@@ -58,7 +58,8 @@ const ProfilePage = () => {
                         {renderMain()}
                     </ProfileMain>
                 </MainContainer>
-            </ProfileContainer>}
+            </ProfileContainer>
+            }
         </>
     )
 }

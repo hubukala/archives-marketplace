@@ -3,6 +3,7 @@ import { collection, query, where, getDocs } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { ProductsContainer } from "../styles/ProductsContainer"
 import ProductCard from "./ProductCard"
+import { CategoryContent } from "../styles/CategoryContent"
 
 const AccountMyItems = () => {
     const [data, setData] = useState([])
