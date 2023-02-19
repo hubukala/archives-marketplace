@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react"
 import { auth, db } from "../firebaseConfig"
 import { collection, query, where, getDocs } from "firebase/firestore"
-import { useEffect, useState } from "react"
-import { ProductsContainer } from "../styles/ProductsContainer"
+import MappingArray from "../shared/MapArray"
 import ProductCard from "./ProductCard"
-import { CategoryContent } from "../styles/CategoryContent"
+import { ProductsContainer } from "../styles/ProductsContainer"
 
 const AccountMyItems = () => {
     const [data, setData] = useState([])
@@ -35,20 +35,14 @@ const AccountMyItems = () => {
         }
         fetchData()
     },[])
+
+    const displayArray = MappingArray(data)
+
     return (
         <>        
             <h1>My Items</h1>
             <ProductsContainer>
-                {data.map((item) => (
-                    <ProductCard
-                        key={item.id}
-                        id={item.id}
-                        image={item.image}
-                        title={item.title}
-                        size={item.size}
-                        price={item.price}
-                    />
-                ))}
+                {displayArray}
             </ProductsContainer>
         </>
     )
