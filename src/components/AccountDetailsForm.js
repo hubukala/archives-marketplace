@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ButtonSecondary } from "../styles/shared/buttons/ButtonSecondary";
 import { DetailsTextArea } from "../styles/account-details/DetailsTextArea";
 import { DetailsInput } from "../styles/account-details/DetailsInput";
@@ -7,10 +7,11 @@ import { DetailsSection } from "../styles/account-details/DetailsSection";
 import { ButtonContainer } from "../styles/account-details/ButtonContainer";
 import { DetailsContainer } from "../styles/account-details/DetailsContainer";
 import { db } from "../firebaseConfig";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 import { auth } from "../firebaseConfig";
 
 const AccountDetailsForm = () => {
+
     const [data, setData] = useState({
         fname: "",
         lname: "",
@@ -21,21 +22,32 @@ const AccountDetailsForm = () => {
         suite: ""
     })
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const userId = auth.currentUser.uid
+            const docRef = doc(db, "users", userId)
+            const docSnap = await getDoc(docRef);
+            console.log("Document data:", docSnap.data());
+            setData({
+                fname: docSnap.data().fname ?? "",
+                lname: docSnap.data().lname ?? "",
+                bio: docSnap.data().bio ?? "",
+                city: docSnap.data().city ?? "",
+                zipcode: docSnap.data().zipcode ?? "",
+                street: docSnap.data().street ?? "",
+                suite: docSnap.data().suite ?? ""
+            })
+        }
+        fetchData()
+    },[])
+
     const handleAdd = async (e) => {
         e.preventDefault();
         try {
             await setDoc(doc(db, "users", auth.currentUser.uid), {
                 ...data,
             });
-            setData({
-                fname: "",
-                lname: "",
-                bio: "",
-                city: "",
-                zipcode: "",
-                street: "",
-                suite: ""
-            });
+            alert("dane zaaktualizowane pomyślnie")
         } catch (err) {
             console.log(err)
         }
