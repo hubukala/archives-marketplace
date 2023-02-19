@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const ProfileContainer = styled.div`
-    margin: 4rem;
+    margin: 2rem;
 `
 
 export { ProfileContainer };
