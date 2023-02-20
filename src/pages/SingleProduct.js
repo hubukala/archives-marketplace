@@ -7,6 +7,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import ButtonProduct from '../components/ButtonProduct';
 import { ProductSection, GallerySection, ProductDescription, ProductDetails, ProductPrice } from '../styles/SingleProductStyles';
 import { ButtonSection } from '../styles/shared/buttons/ButtonProductStyles';
+import { SkChase, SkChaseDot } from '../styles/animations/Chase';
 
 const SingleProduct = () => {
     const [data, setData] = useState({})
@@ -34,22 +35,32 @@ const SingleProduct = () => {
     })
     return (
         <ProductSection>
-            {data.image && 
-            <GallerySection>
-                <ReactImageGallery items={data.image}/>
-            </GallerySection>
+            {data.image ?
+                <>                
+                    <GallerySection>
+                        <ReactImageGallery items={data.image}/>
+                    </GallerySection>
+                    <ProductDescription>
+                        <h2>{data.title}</h2>
+                        <ProductDetails>SIZE: {data.size}</ProductDetails>
+                        <ProductDetails>CONDITION: {data.condition}</ProductDetails>
+                        <ProductPrice>$ {data.price ?? ""}</ProductPrice>
+                    </ProductDescription>
+                    <ButtonSection>                
+                        <ButtonProduct label="PURCHASE"/>
+                        <ButtonProduct label="OFFER"/>
+                        <ButtonProduct label="MESSAGE"/>
+                    </ButtonSection>
+                </> :  
+                <SkChase>
+                    <SkChaseDot></SkChaseDot>
+                    <SkChaseDot></SkChaseDot>
+                    <SkChaseDot></SkChaseDot>
+                    <SkChaseDot></SkChaseDot>
+                    <SkChaseDot></SkChaseDot>
+                    <SkChaseDot></SkChaseDot>
+                </SkChase>
             }
-            <ProductDescription>
-                <h2>{data.title}</h2>
-                <ProductDetails>SIZE: {data.size}</ProductDetails>
-                <ProductDetails>CONDITION: {data.condition}</ProductDetails>
-                <ProductPrice>$ {data.price ?? ""}</ProductPrice>
-            </ProductDescription>
-            <ButtonSection>                
-                <ButtonProduct label="PURCHASE"/>
-                <ButtonProduct label="OFFER"/>
-                <ButtonProduct label="MESSAGE"/>
-            </ButtonSection>
         </ProductSection>
     );
 };
