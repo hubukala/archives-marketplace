@@ -1,25 +1,49 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ProductList from "../data/ProductList.json"
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 import ReactImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
-import { ProductSection, GallerySection, ProductDescription, ProductDetails, ProductPrice } from '../styles/SingleProductStyles';
 import ButtonProduct from '../components/ButtonProduct';
+import { ProductSection, GallerySection, ProductDescription, ProductDetails, ProductPrice } from '../styles/SingleProductStyles';
 import { ButtonSection } from '../styles/shared/buttons/ButtonProductStyles';
 
 const SingleProduct = () => {
+    const [data, setData] = useState({})
     const {productId} = useParams();
-    const product = ProductList.find((product) => product.id === productId);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const docRef = doc(db, "products", productId)
+            const docSnap = await getDoc(docRef);
+            console.log("Document data:", docSnap.data());
+            setData({
+                category: docSnap.data().category,
+                condition: docSnap.data().condition,
+                description: docSnap.data().description,
+                designer: docSnap.data().designer,
+                image: docSnap.data().images.map((item) => ({original: item, thumbnail: item})),
+                price: docSnap.data().price,
+                id: docSnap.data().product_id,
+                size: docSnap.data().size,
+                title: docSnap.data().title,
+            })
+        }
+        fetchData()
+        console.log(data)
+    })
     return (
         <ProductSection>
-            {/* <ImageStyled src={product.image[0]} alt="display" /> */}
+            {data.image && 
             <GallerySection>
-                <ReactImageGallery items={product.image}/>
+                <ReactImageGallery items={data.image}/>
             </GallerySection>
+            }
             <ProductDescription>
-                <h2>{product.title}</h2>
-                <ProductDetails>SIZE: {product.size}</ProductDetails>
-                <ProductDetails>CONDITION: {product.condition}</ProductDetails>
-                <ProductPrice>$ {product.price}</ProductPrice>
+                <h2>{data.title}</h2>
+                <ProductDetails>SIZE: {data.size}</ProductDetails>
+                <ProductDetails>CONDITION: {data.condition}</ProductDetails>
+                <ProductPrice>$ {data.price ?? ""}</ProductPrice>
             </ProductDescription>
             <ButtonSection>                
                 <ButtonProduct label="PURCHASE"/>
