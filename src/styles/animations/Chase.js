@@ -21,6 +21,11 @@ const skchasedotbefore = keyframes`
     }
 `
 
+const SkChaseContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
 const SkChase = styled.div`
     width: 50px;
     height: 50px;
@@ -40,7 +45,7 @@ const SkChaseDot = styled.div`
         display: block;
         width: 25%;
         height: 25%;
-        background-color: red;
+        background-color: grey;
         border-radius: 100%;
         animation: ${skchasedotbefore} 2.0s infinite ease-in-out both; 
     }
@@ -59,4 +64,4 @@ const SkChaseDot = styled.div`
     :nth-child(6):before { animation-delay: -0.6s; }
 `
 
-export { SkChase, SkChaseDot };
+export { SkChase, SkChaseDot, SkChaseContainer };
