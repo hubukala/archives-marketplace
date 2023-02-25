@@ -15,6 +15,7 @@ import SearchResults from './pages/SearchResults';
 import ProfilePage from './pages/Profile';
 import NotFound from './pages/NotFound';
 import Orders from './pages/Orders';
+import CompletePurchase from './pages/CompletePurchase';
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -45,7 +46,8 @@ function App() {
             <Route index element={<Home />}/>
             <Route path="/shop" element={<Shop />}/>
             <Route path="/shop/:productId" element={<SingleProduct />}/>
-            <Route path="/shop/search/:inputId" element={<SearchResults/>}/>
+            <Route path="/shop/:productId/complete" element={<SingleProduct />}/>
+            <Route path="/shop/search/:inputId" element={<CompletePurchase/>}/>
             <Route path="/signup" element=
               {<SignUp
                 showSignUp={showSignUp}
