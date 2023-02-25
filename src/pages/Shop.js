@@ -23,7 +23,7 @@ const Shop = () => {
               condition: doc.data().condition,
               description: doc.data().description,
               designer: doc.data().designer,
-              image: doc.data().images,
+              image: doc.data().images[0],
               price: doc.data().price,
               id: doc.data().product_id,
               size: doc.data().size,

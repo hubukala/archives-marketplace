@@ -7,7 +7,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import ButtonProduct from '../components/ButtonProduct';
 import { ProductSection, GallerySection, ProductDescription, ProductDetails, ProductPrice } from '../styles/SingleProductStyles';
 import { ButtonSection } from '../styles/shared/buttons/ButtonProductStyles';
-import { SkChase, SkChaseDot } from '../styles/animations/Chase';
+import { SkChase, SkChaseDot, SkChaseContainer } from '../styles/animations/Chase';
 
 const SingleProduct = () => {
     const [data, setData] = useState({})
@@ -51,15 +51,17 @@ const SingleProduct = () => {
                         <ButtonProduct label="OFFER"/>
                         <ButtonProduct label="MESSAGE"/>
                     </ButtonSection>
-                </> :  
-                <SkChase>
-                    <SkChaseDot></SkChaseDot>
-                    <SkChaseDot></SkChaseDot>
-                    <SkChaseDot></SkChaseDot>
-                    <SkChaseDot></SkChaseDot>
-                    <SkChaseDot></SkChaseDot>
-                    <SkChaseDot></SkChaseDot>
-                </SkChase>
+                </> :
+                <SkChaseContainer>
+                    <SkChase>
+                        <SkChaseDot></SkChaseDot>
+                        <SkChaseDot></SkChaseDot>
+                        <SkChaseDot></SkChaseDot>
+                        <SkChaseDot></SkChaseDot>
+                        <SkChaseDot></SkChaseDot>
+                        <SkChaseDot></SkChaseDot>
+                    </SkChase>
+                </SkChaseContainer>
             }
         </ProductSection>
     );
