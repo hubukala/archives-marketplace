@@ -1,7 +1,7 @@
 # Archives marketplace platform
 
 This project is a marketplace for archival fashion clothing. Users are able to view, sell and buy garments from specific fashion period and selected designers (or brands). Project is made with React.js and Firebase for BaaS, Cloud Firestore is used as NoSQL database. Marketplace is still under development.
-Additional libraries used in this project:
+Additional libraries applied in this project:
 
 * styled components
 * react router
