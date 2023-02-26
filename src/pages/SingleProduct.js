@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import ReactImageGallery from 'react-image-gallery';
@@ -10,6 +10,7 @@ import { ButtonSection } from '../styles/shared/buttons/ButtonProductStyles';
 import { SkChase, SkChaseDot, SkChaseContainer } from '../styles/animations/Chase';
 
 const SingleProduct = () => {
+    const navigate = useNavigate()
     const [data, setData] = useState({})
     const {productId} = useParams();
 
@@ -31,8 +32,12 @@ const SingleProduct = () => {
             })
         }
         fetchData()
-        console.log(data)
-    })
+    }, [productId])
+
+    const onClickPurchase = (id) => {
+        console.log("purchase button clicked")
+        navigate(`/shop/${id}/complete`);
+    }
     return (
         <ProductSection>
             {data.image ?
@@ -47,7 +52,7 @@ const SingleProduct = () => {
                         <ProductPrice>$ {data.price ?? ""}</ProductPrice>
                     </ProductDescription>
                     <ButtonSection>                
-                        <ButtonProduct label="PURCHASE"/>
+                        <ButtonProduct label="PURCHASE" handleOnClick={() => onClickPurchase(data.id)}/>
                         <ButtonProduct label="OFFER"/>
                         <ButtonProduct label="MESSAGE"/>
                     </ButtonSection>
