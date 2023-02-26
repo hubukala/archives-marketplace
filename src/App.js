@@ -46,8 +46,8 @@ function App() {
             <Route index element={<Home />}/>
             <Route path="/shop" element={<Shop />}/>
             <Route path="/shop/:productId" element={<SingleProduct />}/>
-            <Route path="/shop/:productId/complete" element={<SingleProduct />}/>
-            <Route path="/shop/search/:inputId" element={<CompletePurchase/>}/>
+            <Route path="/shop/:productId/complete" element={<CompletePurchase />}/>
+            <Route path="/shop/search/:inputId" element={<SearchResults/>}/>
             <Route path="/signup" element=
               {<SignUp
                 showSignUp={showSignUp}
