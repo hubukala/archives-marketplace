@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { getDocs, query, where, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig"
 import ConfirmPurchaseCard from "../components/ConfirmPurchaseCard"
+import { ElementContainer, Paragraph, OrderDetailsContainer, ParagraphLight } from "../styles/complete-purchase/PurchaseCardContainer"
 
 const CompletePurchase = () => {
     const productId = useParams()
@@ -41,7 +42,7 @@ const CompletePurchase = () => {
                 <div className="border1">
                     <ConfirmPurchaseForm />
                 </div>
-                <div className="border1">
+                <ElementContainer>
                     <ConfirmPurchaseCard
                         key={data.id}
                         image={data.image}
@@ -51,11 +52,24 @@ const CompletePurchase = () => {
                         id={data.id}
                         category={data.category}
                     />
-                    <p>Order details:</p>
-                    <p>Listing price: {data.price}</p>
-                    <p>Total: {data.price}</p>
-                    {/* {data.id} */}
-                </div>
+                    <Paragraph>ORDER DETAILS:</Paragraph>
+                    <OrderDetailsContainer>
+                        <ParagraphLight>
+                            Listing price:
+                        </ParagraphLight>
+                        <ParagraphLight>
+                            {data.price}
+                        </ParagraphLight>
+                    </OrderDetailsContainer>
+                    <OrderDetailsContainer>
+                        <Paragraph>
+                            TOTAL:
+                        </Paragraph>
+                        <ParagraphLight>
+                            {data.price}
+                        </ParagraphLight>
+                    </OrderDetailsContainer>
+                </ElementContainer>
             </CompletePurchaseContainer>
         </Section>
     )

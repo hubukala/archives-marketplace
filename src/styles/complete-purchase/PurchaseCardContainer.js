@@ -3,13 +3,15 @@ import styled from "styled-components";
 const PurchaseCardContainer = styled.div`
   display: flex;
   gap: 20px;
-  text-align: left;
-  line-height: 25px;
   height: 155px;
   box-sizing: border-box;
   border: 1px solid grey;
   border-radius: 5px;
   font-size: 18px;
+`
+
+const ElementContainer = styled.div`
+  margin: 1.5rem;
 `
 
 const ImageThumbnail = styled.img`
@@ -20,4 +22,26 @@ const ImageThumbnail = styled.img`
   object-fit: contain;
 `
 
-export { PurchaseCardContainer, ImageThumbnail };
+const DescriptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const OrderDetailsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const TitleSize = styled.div`
+  line-height: 0px;
+`
+
+const Paragraph = styled.p`
+  font-weight: bold
+`
+
+const ParagraphLight = styled.p`
+`
+
+export { PurchaseCardContainer, ElementContainer, ImageThumbnail, DescriptionContainer, TitleSize, Paragraph, ParagraphLight, OrderDetailsContainer };
