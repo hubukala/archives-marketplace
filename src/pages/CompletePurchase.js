@@ -65,9 +65,9 @@ const CompletePurchase = () => {
                         <Paragraph>
                             TOTAL:
                         </Paragraph>
-                        <ParagraphLight>
+                        <Paragraph>
                             {data.price}
-                        </ParagraphLight>
+                        </Paragraph>
                     </OrderDetailsContainer>
                 </ElementContainer>
             </CompletePurchaseContainer>

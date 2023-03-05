@@ -5,7 +5,7 @@ import { auth } from "../firebaseConfig";
 import { uuidv4 } from "@firebase/util";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import ItemPostedPopup from "./ItemPostedPopup";
+import SuccessPopup from "./SuccessPopup";
 import { InputMain, InputSelect, InputTextArea } from "../styles/post-item-form/PostItemFormStyles";
 import { InputError } from "../styles/post-item-form/InputError";
 import { FormContainer } from "../styles/post-item-form/FormContainer";
@@ -160,7 +160,12 @@ const SellForm = () => {
         <h3>UPLOAD IMAGES</h3>
         <button type="submit">select</button>
       </form>
-      <ItemPostedPopup successMessage={successMessage} setSuccessMessage={setSuccessMessage}/>
+      <SuccessPopup 
+        successMessage={successMessage} 
+        setSuccessMessage={setSuccessMessage}
+        title="Item posted successfully!"
+        description="Go to 'My items' tab in your profile page to see your listings."
+      />
     </FormContainer>
   )
 }

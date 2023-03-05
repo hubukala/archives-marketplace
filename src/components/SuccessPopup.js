@@ -4,7 +4,7 @@ import { BackgroundContainer } from "../styles/login-signup/BackgroundContainer"
 import { PostedItemContainer, PostedItemWrapper, ContentWrapper } from "../styles/post-item-form/PostItemSuccessPopup"
 import Tick from "../assets/images/tick.png"
 
-const ItemPostedPopup = ({ successMessage, setSuccessMessage }) => {
+const SuccessPopup = ({ successMessage, setSuccessMessage, title, description }) => {
     
     const navigate = useNavigate()
     const closePopup = () => {
@@ -19,8 +19,8 @@ const ItemPostedPopup = ({ successMessage, setSuccessMessage }) => {
                             <PostedItemWrapper>
                                 <ContentWrapper>
                                     <img src={Tick} alt="tick" width="100" height="100"/>
-                                    <h1>Item posted successfully!</h1>
-                                    <p>Go to 'My items' tab in your profile page to see your listings.</p>
+                                    <h1>{title}</h1>
+                                    <p>{description}</p>
                                 </ContentWrapper>
                                 <ButtonPrimary onClick={closePopup}>CLOSE</ButtonPrimary>
                             </PostedItemWrapper>
@@ -31,4 +31,4 @@ const ItemPostedPopup = ({ successMessage, setSuccessMessage }) => {
     )
 }
 
-export default ItemPostedPopup;
+export default SuccessPopup;
