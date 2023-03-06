@@ -67,30 +67,6 @@ const SellForm = () => {
     },
   });
 
-  const [data, setData] = useState({})
-
-  const handleInputs = (e) => {
-    let inputs = { [e.target.name]: e.target.value }
-    setData({...data, ...inputs})
-    console.log(data)
-  }
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault()
-    // setDoc(doc(productsRef, uniqueId), {
-    //   user_id: auth.currentUser.uid,
-    //   product_id: uniqueId,
-    //   title: event.target.itemTitle.value,
-    //   description: event.target.description.value,
-    //   size: event.target.size.value,
-    //   color: event.target.color.value,
-    //   designer: event.target.designer.value,
-    //   category: event.target.category.value, 
-    //   condition: event.target.condition.value, 
-    //   price: event.target.price.value, 
-    // })
-    // setSuccessMessage(true)
-  // }
   return (   
     <FormContainer>
       <h1>Add a new listing</h1>
