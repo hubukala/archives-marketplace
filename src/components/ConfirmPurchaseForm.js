@@ -7,8 +7,10 @@ import { ButtonPrimary } from "../styles/shared/buttons/ButtonPrimary";
 import { InputError } from "../styles/post-item-form/InputError";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
+import { auth, db } from "../firebaseConfig";
+import { doc, updateDoc } from "firebase/firestore";
 
-const ConfirmPurchaseForm = () => {
+const ConfirmPurchaseForm = ({ productId }) => {
     const [successMessage, setSuccessMessage] = useState(false)
     const formik = useFormik({
         initialValues: {
@@ -44,8 +46,16 @@ const ConfirmPurchaseForm = () => {
                 .min(3)
                 .max(4),
             }),
-        onSubmit: value => {
-            setSuccessMessage(true)
+        onSubmit: async (value) => {
+            try {
+                await updateDoc(doc(db, "products", productId), {
+                    buyer_id: auth.currentUser.uid,
+                    available: false
+                })
+                setSuccessMessage(true)
+            } catch (err) {
+                console.log(err)
+            }
         }
     })
     return(

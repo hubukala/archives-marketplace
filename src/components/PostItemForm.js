@@ -54,6 +54,7 @@ const SellForm = () => {
       setDoc(doc(productsRef, uniqueId), {
         user_id: auth.currentUser.uid,
         product_id: uniqueId,
+        available: true,
         title: values.itemTitle,
         description: values.description,
         size: values.size,
@@ -61,7 +62,7 @@ const SellForm = () => {
         designer: values.designer,
         category: values.category, 
         condition: values.condition, 
-        price: values.price, 
+        price: values.price
       })
       setSuccessMessage(true)
     },

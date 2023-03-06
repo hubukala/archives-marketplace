@@ -10,7 +10,6 @@ import { ElementContainer, Paragraph, OrderDetailsContainer, ParagraphLight } fr
 
 const CompletePurchase = () => {
     const productId = useParams()
-    console.log(productId.productId)
     const [data, setData] = useState({})
 
     useEffect(() => {
@@ -40,7 +39,7 @@ const CompletePurchase = () => {
         <Section>
             <CompletePurchaseContainer>
                 <div className="border1">
-                    <ConfirmPurchaseForm />
+                    <ConfirmPurchaseForm productId={productId.productId}/>
                 </div>
                 <ElementContainer>
                     <ConfirmPurchaseCard
