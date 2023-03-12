@@ -13,9 +13,12 @@ Additional libraries applied in this project:
 
 ### To run this project:
 1. clone repo
-2. go to project directory
-3. npm install
-4. npm start
+2. create firebase project
+3. add your own firebase config file to the project
+4. create "users" and "products" collections in your firestore database
+5. go to project directory
+6. npm install
+7. npm start
 
 ### So far project looks like this:
 ![1](https://user-images.githubusercontent.com/73420865/195429639-a249d09c-8fb7-4a12-b6a1-a921253d73b5.png)
