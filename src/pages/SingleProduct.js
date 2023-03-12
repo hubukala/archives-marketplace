@@ -29,10 +29,11 @@ const SingleProduct = () => {
                 id: docSnap.data().product_id,
                 size: docSnap.data().size,
                 title: docSnap.data().title,
+                buyer_id: docSnap.data().buyer_id
             })
         }
         fetchData()
-    }, [productId])
+    }, [productId, data.buyer_id])
 
     const onClickPurchase = (id) => {
         console.log("purchase button clicked")
@@ -40,8 +41,8 @@ const SingleProduct = () => {
     }
     return (
         <ProductSection>
-            {data.image ?
-                <>                
+            {data.image ? (
+                <>        
                     <GallerySection>
                         <ReactImageGallery items={data.image}/>
                     </GallerySection>
@@ -51,12 +52,21 @@ const SingleProduct = () => {
                         <ProductDetails>CONDITION: {data.condition}</ProductDetails>
                         <ProductPrice>$ {data.price ?? ""}</ProductPrice>
                     </ProductDescription>
-                    <ButtonSection>                
-                        <ButtonProduct label="PURCHASE" handleOnClick={() => onClickPurchase(data.id)}/>
-                        <ButtonProduct label="OFFER"/>
-                        <ButtonProduct label="MESSAGE"/>
+                    <ButtonSection>
+                        {data.buyer_id ?
+                            <>                            
+                                <ButtonProduct disabled label="SOLD OUT"/>
+                            </> :
+                            <>                           
+                                <ButtonProduct label="PURCHASE" handleOnClick={() => onClickPurchase(data.id)}/>
+                                {/* todo: add offer function and messages */}
+                                {/* <ButtonProduct label="OFFER"/>
+                                <ButtonProduct label="MESSAGE"/> */}
+                            </>
+                        }         
                     </ButtonSection>
-                </> :
+                </> 
+            ) :
                 <SkChaseContainer>
                     <SkChase>
                         <SkChaseDot></SkChaseDot>
