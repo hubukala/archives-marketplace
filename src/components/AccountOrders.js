@@ -39,7 +39,7 @@ const AccountOrders = () => {
 
     return (
         <>        
-            <h1>Account orders</h1>
+            <h1>Ordered items</h1>
             <ProductsContainer>
                 {displayArray}
             </ProductsContainer>

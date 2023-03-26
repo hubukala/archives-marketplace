@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { db } from '../firebaseConfig';
+import { db, storage } from '../firebaseConfig';
 import { collection, doc, setDoc } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL, listAll, list } from "firebase/storage";
 import { auth } from "../firebaseConfig";
 import { uuidv4 } from "@firebase/util";
 import { useFormik } from "formik";
@@ -14,6 +15,11 @@ const SellForm = () => {
   const productsRef = collection(db, 'products');
   const uniqueId = uuidv4()
   const [successMessage, setSuccessMessage] = useState(false)
+
+  const [imageUpload, setImageUpload] = useState([]);
+  const [imageUrls, setImageUrls] = useState([]);
+
+  const imagesListRef = ref(storage, "products/");
 
   const formik = useFormik({
     initialValues: {
@@ -49,8 +55,17 @@ const SellForm = () => {
         .required('Please select shipping carrier'),
       shippingPrice: Yup.number()
         .required('Shipping price is required'),
+      // file: Yup.mixed().required('Please upload at least one image'),
     }),
     onSubmit: values => {
+      imageUpload.map((el) => {
+        const imageRef = ref(storage, `products/${el.name + uniqueId}`);
+        uploadBytes(imageRef, el).then((snapshot) => {
+          getDownloadURL(snapshot.ref).then((url) => {
+            setImageUrls((prev) => [...prev, url]);
+          });
+        });
+      })
       setDoc(doc(productsRef, uniqueId), {
         user_id: auth.currentUser.uid,
         product_id: uniqueId,
@@ -62,11 +77,29 @@ const SellForm = () => {
         designer: values.designer,
         category: values.category, 
         condition: values.condition, 
-        price: values.price
+        price: values.price,
+        image: imageUrls
       })
       setSuccessMessage(true)
     },
   });
+
+  const uploadFile = () => {
+    const imageRef = ref(storage, `products/${imageUpload.name + uniqueId}`);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageUrls((prev) => [...prev, url]);
+      });
+    });
+  };
+
+  const handleOnChange = (event) => {
+    const files = event.target.files
+    Array.from(files).map((el) => (
+      console.log(el.name),
+      setImageUpload((prev) => [...prev, el])
+    ))
+  }
 
   return (   
     <FormContainer>
@@ -135,7 +168,23 @@ const SellForm = () => {
           <InputError>{formik.errors.shippingPrice}</InputError>
         ) : null}
         <h3>UPLOAD IMAGES</h3>
-        <button type="submit">select</button>
+        {imageUpload.map((el) => {
+          return <p>{el.name}</p>
+        })}
+        <input 
+          type="file"
+          id="file"
+          name="file"
+          multiple
+          onChange={(event) => {
+            handleOnChange(event)
+          }}
+        />
+        {imageUpload.length < 1 && formik.errors.file ? (
+          <InputError>{formik.errors.file}</InputError>
+        ) : null} 
+        <br />
+        <button type="submit">SUBMIT</button>
       </form>
       <SuccessPopup 
         successMessage={successMessage} 
