@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { db, storage } from '../firebaseConfig';
 import { collection, doc, setDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL, listAll, list } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { auth } from "../firebaseConfig";
 import { uuidv4 } from "@firebase/util";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import SuccessPopup from "./SuccessPopup";
+import { ButtonSecondary } from "../styles/shared/buttons/ButtonSecondary";
+import { FileUploadPrimary, FileUploadInput, FilesPreviewContainer } from "../styles/FileUpload";
 import { InputMain, InputSelect, InputTextArea } from "../styles/post-item-form/PostItemFormStyles";
 import { InputError } from "../styles/post-item-form/InputError";
 import { FormContainer } from "../styles/post-item-form/FormContainer";
@@ -16,10 +18,44 @@ const SellForm = () => {
   const uniqueId = uuidv4()
   const [successMessage, setSuccessMessage] = useState(false)
 
+  const [filesPreview, setFilesPreview] = useState([]);
   const [imageUpload, setImageUpload] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
 
-  const imagesListRef = ref(storage, "products/");
+  // const imagesListRef = ref(storage, "products/");
+
+  useEffect(() => {
+    if (imageUpload.length !== 0 && imageUrls.length === imageUpload.length) {
+      setDoc(doc(productsRef, uniqueId), {
+        user_id: auth.currentUser.uid,
+        product_id: uniqueId,
+        available: true,
+        title: formik.values.itemTitle,
+        description: formik.values.description,
+        size: formik.values.size,
+        color: formik.values.color,
+        designer: formik.values.designer,
+        category: formik.values.category, 
+        condition: formik.values.condition, 
+        price: formik.values.price,
+        images: imageUrls
+      })
+      setSuccessMessage(true)
+    } else {
+      console.log("imageurls empty")
+    }
+  }, [imageUrls])
+
+  const uploadFile = () => {
+    imageUpload.map((el) => {
+      const imageRef = ref(storage, `products/${el.name + uniqueId}`);
+      uploadBytes(imageRef, el).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => {
+          setImageUrls((prev) => [...prev, url]);
+        })
+      })
+    })
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -57,47 +93,16 @@ const SellForm = () => {
         .required('Shipping price is required'),
       // file: Yup.mixed().required('Please upload at least one image'),
     }),
-    onSubmit: values => {
-      imageUpload.map((el) => {
-        const imageRef = ref(storage, `products/${el.name + uniqueId}`);
-        uploadBytes(imageRef, el).then((snapshot) => {
-          getDownloadURL(snapshot.ref).then((url) => {
-            setImageUrls((prev) => [...prev, url]);
-          });
-        });
-      })
-      setDoc(doc(productsRef, uniqueId), {
-        user_id: auth.currentUser.uid,
-        product_id: uniqueId,
-        available: true,
-        title: values.itemTitle,
-        description: values.description,
-        size: values.size,
-        color: values.color,
-        designer: values.designer,
-        category: values.category, 
-        condition: values.condition, 
-        price: values.price,
-        image: imageUrls
-      })
-      setSuccessMessage(true)
+    onSubmit: async values => {
+      uploadFile()
     },
   });
-
-  const uploadFile = () => {
-    const imageRef = ref(storage, `products/${imageUpload.name + uniqueId}`);
-    uploadBytes(imageRef, imageUpload).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        setImageUrls((prev) => [...prev, url]);
-      });
-    });
-  };
 
   const handleOnChange = (event) => {
     const files = event.target.files
     Array.from(files).map((el) => (
-      console.log(el.name),
-      setImageUpload((prev) => [...prev, el])
+      setImageUpload((prev) => [...prev, el]),
+      setFilesPreview((prev) => [...prev, URL.createObjectURL(el)])
     ))
   }
 
@@ -168,23 +173,30 @@ const SellForm = () => {
           <InputError>{formik.errors.shippingPrice}</InputError>
         ) : null}
         <h3>UPLOAD IMAGES</h3>
-        {imageUpload.map((el) => {
-          return <p>{el.name}</p>
-        })}
-        <input 
-          type="file"
-          id="file"
-          name="file"
-          multiple
-          onChange={(event) => {
-            handleOnChange(event)
-          }}
-        />
+        {filesPreview.length > 0 ?
+          <FilesPreviewContainer>
+            {filesPreview.map((el) => {
+              return <img src={el} alt={el} key={el} width="200" height="200"/>
+            })}
+          </FilesPreviewContainer> : null
+        }
+        <FileUploadPrimary>
+          <FileUploadInput
+            type="file"
+            id="file"
+            name="file"
+            multiple
+            onChange={(event) => {
+              handleOnChange(event)
+            }}
+          />
+          SELECT IMAGES
+        </FileUploadPrimary>
         {imageUpload.length < 1 && formik.errors.file ? (
           <InputError>{formik.errors.file}</InputError>
         ) : null} 
         <br />
-        <button type="submit">SUBMIT</button>
+        <ButtonSecondary type="submit">POST ITEM</ButtonSecondary>
       </form>
       <SuccessPopup 
         successMessage={successMessage} 
