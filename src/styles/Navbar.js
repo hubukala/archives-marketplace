@@ -14,4 +14,9 @@ const Navbar = styled.nav`
   padding: 0;
 `;
 
-export { Navbar };
+const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 5px;
+`
+
+export { Navbar, ButtonsContainer };

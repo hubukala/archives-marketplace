@@ -1,4 +1,4 @@
-import { Navbar } from "../styles/Navbar";
+import { Navbar, ButtonsContainer } from "../styles/Navbar";
 import { Links } from "../styles/Links";
 import SearchBar from "./SearchBar";
 import { useNavigate } from "react-router-dom";
@@ -45,22 +45,22 @@ const StyledNavbar = ({ showLogin, setShowLogin, showSignUp, setShowSignUp, isSi
           SHOP
         </Links>
         { !isSignedIn ?
-          <div>
+          <ButtonsContainer>
             <ButtonPrimary onClick={openLogin}>
               LOGIN
             </ButtonPrimary>
             <ButtonSecondary onClick={openSignUp}>
               SIGN UP
             </ButtonSecondary> 
-          </div>
-        : <div>
+          </ButtonsContainer>
+        : <ButtonsContainer>
             <ButtonPrimary onClick={() => navigate("/profile")}>
               PROFILE
             </ButtonPrimary>
             <ButtonSecondary onClick={signOut}>
               SIGN OUT
             </ButtonSecondary>
-          </div>
+          </ButtonsContainer>
         }
       </Navbar>
       <LoginPopup showLogin={showLogin} setShowLogin={setShowLogin} isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
