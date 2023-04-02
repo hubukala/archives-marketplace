@@ -8,10 +8,11 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 import SuccessPopup from "./SuccessPopup";
 import { ButtonSecondary } from "../styles/shared/buttons/ButtonSecondary";
-import { FileUploadPrimary, FileUploadInput, FilesPreviewContainer } from "../styles/FileUpload";
+import { FileUploadPrimary, FileUploadInput, FilesPreviewContainer, FilesPreviewElement } from "../styles/FileUpload";
 import { InputMain, InputSelect, InputTextArea } from "../styles/post-item-form/PostItemFormStyles";
 import { InputError } from "../styles/post-item-form/InputError";
 import { FormContainer } from "../styles/post-item-form/FormContainer";
+import { ButtonPrimary } from "../styles/shared/buttons/ButtonPrimary";
 
 const SellForm = () => {
   const productsRef = collection(db, 'products');
@@ -106,6 +107,17 @@ const SellForm = () => {
     ))
   }
 
+  const handleRemove = (index) => {
+    const currentFilesPreview = filesPreview
+    const currentFilesList = imageUpload
+    const currentImageUrls = imageUrls
+    console.log(currentFilesPreview)
+    console.log(currentFilesList)
+    console.log(currentImageUrls)
+    setFilesPreview(filesPreview.filter((o, i) => index !== i))
+    setImageUpload(imageUpload.filter((o, i) => index !== i))
+  }
+
   return (   
     <FormContainer>
       <h1>Add a new listing</h1>
@@ -175,8 +187,13 @@ const SellForm = () => {
         <h3>UPLOAD IMAGES</h3>
         {filesPreview.length > 0 ?
           <FilesPreviewContainer>
-            {filesPreview.map((el) => {
-              return <img src={el} alt={el} key={el} width="200" height="200"/>
+            {filesPreview.map((el, index) => {
+              return (
+                <FilesPreviewElement>
+                  <img src={el} alt={el} key={index} width="200" height="200"/>
+                  <ButtonPrimary type="button" onClick={() => handleRemove(index)}>REMOVE IMAGE</ButtonPrimary>
+                </FilesPreviewElement>
+              )
             })}
           </FilesPreviewContainer> : null
         }
