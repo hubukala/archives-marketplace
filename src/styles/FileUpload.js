@@ -64,4 +64,10 @@ const FilesPreviewContainer = styled.div`
     margin-top: 10px;
 `
 
-export { FileUploadPrimary, FileUploadPrimaryParagraph, FileUploadSecondary, FileUploadInput, FilesPreviewContainer };
+const FilesPreviewElement = styled.div`
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+`
+
+export { FileUploadPrimary, FileUploadPrimaryParagraph, FileUploadSecondary, FileUploadInput, FilesPreviewContainer, FilesPreviewElement };
