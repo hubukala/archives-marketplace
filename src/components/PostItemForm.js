@@ -31,7 +31,7 @@ const SellForm = () => {
         user_id: auth.currentUser.uid,
         product_id: uniqueId,
         available: true,
-        title: formik.values.itemTitle,
+        title: formik.values.itemTitle.toLocaleUpperCase(),
         description: formik.values.description,
         size: formik.values.size,
         color: formik.values.color,
