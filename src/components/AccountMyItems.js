@@ -3,8 +3,10 @@ import { auth, db } from "../firebaseConfig"
 import { collection, query, where, getDocs } from "firebase/firestore"
 import MappingArray from "../shared/MapArray"
 import { ProductsContainer } from "../styles/ProductsContainer"
+import Loader from "./Loader"
 
 const AccountMyItems = () => {
+    const [productsLoaded, setProductsLoaded] = useState(false)
     const [data, setData] = useState([])
     
     useEffect(() => {
@@ -13,8 +15,7 @@ const AccountMyItems = () => {
             const q = query(collection(db, "products"), where("user_id", "==", userId))
             const querySnapshot = await getDocs(q)
             querySnapshot.forEach((doc) => {
-                console.log(doc.id, " => ", doc.data())
-                console.log(doc.data().price)
+                setProductsLoaded(true)
                 setData(currentState => 
                     [...currentState, 
                         {
@@ -38,11 +39,12 @@ const AccountMyItems = () => {
     const displayArray = MappingArray(data)
 
     return (
-        <>        
+        <>
             <h1>My Items</h1>
+            {!productsLoaded ? <Loader/> :
             <ProductsContainer>
-                {displayArray}
-            </ProductsContainer>
+                {data.length < 1 ? "You didn't post any items yet." : displayArray}
+            </ProductsContainer>}
         </>
     )
 }

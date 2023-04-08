@@ -3,8 +3,10 @@ import { auth, db } from "../firebaseConfig"
 import { collection, query, where, getDocs } from "firebase/firestore"
 import MappingArray from "../shared/MapArray"
 import { ProductsContainer } from "../styles/ProductsContainer"
+import Loader from "./Loader"
 
 const AccountOrders = () => {
+    const [productsLoaded, setProductsLoaded] = useState(false)
     const [data, setData] = useState([])
     
     useEffect(() => {
@@ -13,8 +15,7 @@ const AccountOrders = () => {
             const q = query(collection(db, "products"), where("buyer_id", "==", userId))
             const querySnapshot = await getDocs(q)
             querySnapshot.forEach((doc) => {
-                console.log(doc.id, " => ", doc.data())
-                console.log(doc.data().price)
+                setProductsLoaded(true)
                 setData(currentState => 
                     [...currentState, 
                         {
@@ -40,9 +41,10 @@ const AccountOrders = () => {
     return (
         <>        
             <h1>Ordered items</h1>
+            {!productsLoaded ? <Loader /> :
             <ProductsContainer>
-                {displayArray}
-            </ProductsContainer>
+                {data.length < 1 ? "You didn't order anything yet." : displayArray}
+            </ProductsContainer>}
         </>
     )
 }
