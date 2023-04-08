@@ -12,6 +12,7 @@ import { ProfileMain } from "../styles/profile/ProfileMain";
 import { MainContainer } from "../styles/profile/MainContainer";
 import { AvatarStyling } from "../styles/profile/AvatarStyling";
 import Avatar from "../assets/images/168732.png"
+import Loader from "../components/Loader";
 
 const ProfilePage = () => {
     const [signedInUser, setSignedInUser] = useState("")
@@ -41,10 +42,10 @@ const ProfilePage = () => {
 
     return (
         <>        
-            {signedInUser === "" ? <h1>loading...</h1> : 
+            {!signedInUser ? <Loader/> : 
             <ProfileContainer>
                 <ProfileHead>
-                    <AvatarStyling src={Avatar} alt="AV" /> <br />
+                    <AvatarStyling src={Avatar} alt="AV"/> <br />
                     {signedInUser.email} <br />
                     Joined in: {(signedInUser.metadata.creationTime).slice(12, 17)}
                 </ProfileHead>

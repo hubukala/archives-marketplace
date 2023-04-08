@@ -9,6 +9,7 @@ const SideBarButton = styled.button`
   transition: all 0.2s;
   &:hover {
     color: blue;
+    cursor: pointer;
   }
 `
 

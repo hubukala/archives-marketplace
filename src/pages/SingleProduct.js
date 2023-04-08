@@ -7,7 +7,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import ButtonProduct from '../components/ButtonProduct';
 import { ProductSection, GallerySection, ProductDescription, ProductDetails, ProductPrice } from '../styles/SingleProductStyles';
 import { ButtonSection } from '../styles/shared/buttons/ButtonProductStyles';
-import { SkChase, SkChaseDot, SkChaseContainer } from '../styles/animations/Chase';
+import Loader from '../components/Loader';
 
 const SingleProduct = () => {
     const navigate = useNavigate()
@@ -66,18 +66,7 @@ const SingleProduct = () => {
                         }         
                     </ButtonSection>
                 </> 
-            ) :
-                <SkChaseContainer>
-                    <SkChase>
-                        <SkChaseDot></SkChaseDot>
-                        <SkChaseDot></SkChaseDot>
-                        <SkChaseDot></SkChaseDot>
-                        <SkChaseDot></SkChaseDot>
-                        <SkChaseDot></SkChaseDot>
-                        <SkChaseDot></SkChaseDot>
-                    </SkChase>
-                </SkChaseContainer>
-            }
+            ) : <Loader/> }
         </ProductSection>
     );
 };

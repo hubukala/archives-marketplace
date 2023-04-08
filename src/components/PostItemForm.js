@@ -23,8 +23,6 @@ const SellForm = () => {
   const [imageUpload, setImageUpload] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
 
-  // const imagesListRef = ref(storage, "products/");
-
   useEffect(() => {
     if (imageUpload.length !== 0 && imageUrls.length === imageUpload.length) {
       setDoc(doc(productsRef, uniqueId), {
@@ -171,8 +169,8 @@ const SellForm = () => {
           <InputError>{formik.errors.price}</InputError>
         ) : null}
         <h3>SHIPPING</h3>
-        <InputSelect defaultValue={'DEFAULT'} name="shippingCarrier" id="shipping" onChange={formik.handleChange} value={formik.values.shippingCarrier}>
-          <option value="DEFAULT" disabled selected hidden>Choose carrier</option>
+        <InputSelect name="shippingCarrier" id="shipping" onChange={formik.handleChange} value={formik.values.shippingCarrier}>
+          <option value="" disabled selected hidden>Choose carrier</option>
           <option value="dhl">DHL</option>
           <option value="fedex">FEDEX</option>
           <option value="ups">UPS</option>
