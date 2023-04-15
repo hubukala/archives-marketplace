@@ -14,8 +14,8 @@ const AccountMyItems = () => {
             const userId = auth.currentUser.uid
             const q = query(collection(db, "products"), where("user_id", "==", userId))
             const querySnapshot = await getDocs(q)
+            setProductsLoaded(true)
             querySnapshot.forEach((doc) => {
-                setProductsLoaded(true)
                 setData(currentState => 
                     [...currentState, 
                         {
