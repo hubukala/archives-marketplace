@@ -106,12 +106,6 @@ const SellForm = () => {
   }
 
   const handleRemove = (index) => {
-    const currentFilesPreview = filesPreview
-    const currentFilesList = imageUpload
-    const currentImageUrls = imageUrls
-    console.log(currentFilesPreview)
-    console.log(currentFilesList)
-    console.log(currentImageUrls)
     setFilesPreview(filesPreview.filter((o, i) => index !== i))
     setImageUpload(imageUpload.filter((o, i) => index !== i))
   }
