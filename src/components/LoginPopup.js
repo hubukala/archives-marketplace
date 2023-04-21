@@ -38,11 +38,9 @@ const LoginPopup = ({ showLogin, setShowLogin, isSignedIn, setIsSignedIn }) => {
     useEffect(() => {
         onAuthStateChanged(auth, (data) => {
             if(data) {
-                console.log("Logged In")
                 setIsSignedIn(true)
                 setShowLogin(false)
             } else {
-                console.log("Logged out")
                 setIsSignedIn(false)
                 setShowLogin(false)
             }
