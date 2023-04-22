@@ -13,6 +13,7 @@ import { LoginLabel } from "../styles/login-signup/LoginLabel";
 import { LoginInput } from "../styles/login-signup/LoginInput";
 import { Description } from "../styles/login-signup/Description";
 import { ButtonLoginSmall } from "../styles/login-signup/ButtonLoginSmall";
+import { ButtonsContainer } from "../styles/shared/containers/ButtonsContainer";
 
 const SignUpPopup = ({ showSignUp, setShowSignUp, setShowLogin }) => {
     const userRef = collection(db, 'users');
@@ -64,8 +65,10 @@ const SignUpPopup = ({ showSignUp, setShowSignUp, setShowLogin }) => {
                                     onChange={event => handleInputs(event)}
                                 /> <br />
                                 <p>Already have an account? <ButtonLoginSmall onClick={() => {toggleModal(setShowSignUp); toggleModal(setShowLogin)}}>Log in</ButtonLoginSmall> </p>
-                                <ButtonSecondary onClick={submitData}>SIGN UP</ButtonSecondary>
-                                <ButtonPrimary onClick={() => toggleModal(setShowSignUp)}>CLOSE</ButtonPrimary>
+                                <ButtonsContainer>
+                                    <ButtonSecondary onClick={submitData}>SIGN UP</ButtonSecondary>
+                                    <ButtonPrimary onClick={() => toggleModal(setShowSignUp)}>CLOSE</ButtonPrimary>
+                                </ButtonsContainer>
                             </LoginForm>
                         </LoginWrapper>
                     </LoginContainer>

@@ -7,6 +7,7 @@ import { LoginForm } from "../styles/login-signup/LoginForm";
 import { LoginLabel } from "../styles/login-signup/LoginLabel";
 import { LoginInput } from "../styles/login-signup/LoginInput";
 import { Description } from "../styles/login-signup/Description";
+import { ButtonsContainer } from "../styles/shared/containers/ButtonsContainer";
 import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
@@ -67,8 +68,10 @@ const LoginPopup = ({ showLogin, setShowLogin, isSignedIn, setIsSignedIn }) => {
                                     name="password"
                                     onChange={event => handleInputs(event)}
                                 /> <br />
-                                <ButtonSecondary onClick={submitData}>LOGIN</ButtonSecondary>
-                                <ButtonPrimary onClick={() => setShowLogin (prev => !prev)}>CLOSE</ButtonPrimary>
+                                <ButtonsContainer>
+                                    <ButtonSecondary onClick={submitData}>LOGIN</ButtonSecondary>
+                                    <ButtonPrimary onClick={() => setShowLogin (prev => !prev)}>CLOSE</ButtonPrimary>
+                                </ButtonsContainer>
                             </LoginForm>
                         </LoginWrapper>
                     </LoginContainer>

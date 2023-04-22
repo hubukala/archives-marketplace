@@ -50,6 +50,7 @@ const SingleProduct = () => {
                         <h2>{data.title}</h2>
                         <ProductDetails>SIZE: {data.size}</ProductDetails>
                         <ProductDetails>CONDITION: {data.condition}</ProductDetails>
+                        <ProductDetails>{data.description}</ProductDetails>
                         <ProductPrice>$ {data.price ?? ""}</ProductPrice>
                     </ProductDescription>
                     <ButtonSection>
