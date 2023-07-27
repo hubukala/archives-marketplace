@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { auth } from '../firebaseConfig';
+import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import ReactImageGallery from 'react-image-gallery';
@@ -12,7 +14,16 @@ import Loader from '../components/Loader';
 const SingleProduct = () => {
     const navigate = useNavigate()
     const [data, setData] = useState({})
+    const [isSignedIn, setIsSignedIn] = useState();
     const {productId} = useParams();
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setIsSignedIn(true)
+          }
+        })
+      })
 
     useEffect(() => {
         const fetchData = async () => {
@@ -58,9 +69,10 @@ const SingleProduct = () => {
                             <>                            
                                 <ButtonProduct disabled label="SOLD OUT"/>
                             </> :
-                            <>                           
-                                <ButtonProduct label="PURCHASE" handleOnClick={() => onClickPurchase(data.id)}/>
-                                {/* todo: add offer function and messages */}
+                            <>
+                                {isSignedIn ? (<ButtonProduct label="PURCHASE" handleOnClick={() => onClickPurchase(data.id)}/>) : <p>Please sign in to make a purchase</p>}                     
+                                {/* todo: add offer function and messages 
+                                todo: add disabled option to the purchase button*/}
                                 {/* <ButtonProduct label="OFFER"/>
                                 <ButtonProduct label="MESSAGE"/> */}
                             </>
