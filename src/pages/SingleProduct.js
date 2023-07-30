@@ -10,6 +10,8 @@ import ButtonProduct from '../components/ButtonProduct';
 import { ProductSection, GallerySection, ProductDescription, ProductDetails, ProductPrice } from '../styles/SingleProductStyles';
 import { ButtonSection } from '../styles/shared/buttons/ButtonProductStyles';
 import Loader from '../components/Loader';
+import { HoverCard, Button, Text, Group } from '@mantine/core';
+import { ButtonWrapper } from '../styles/shared/buttons/ButtonProductStyles';
 
 const SingleProduct = () => {
     const navigate = useNavigate()
@@ -70,9 +72,21 @@ const SingleProduct = () => {
                                 <ButtonProduct disabled label="SOLD OUT"/>
                             </> :
                             <>
-                                {isSignedIn ? (<ButtonProduct label="PURCHASE" handleOnClick={() => onClickPurchase(data.id)}/>) : <p>Please sign in to make a purchase</p>}                     
-                                {/* todo: add offer function and messages 
-                                todo: add disabled option to the purchase button*/}
+                            <Group position="center" display={'block'}>
+                                <HoverCard width={280} shadow="md" disabled={isSignedIn} withArrow>
+                                    <HoverCard.Target>
+                                        <ButtonWrapper>
+                                            <ButtonProduct disabled={!isSignedIn} label="PURCHASE" handleOnClick={() => onClickPurchase(data.id)}/>
+                                        </ButtonWrapper>
+                                    </HoverCard.Target>
+                                    <HoverCard.Dropdown>
+                                        <Text size="sm">
+                                            Please sign in to make a purchase.
+                                        </Text>
+                                    </HoverCard.Dropdown>
+                                </HoverCard>
+                            </Group>
+                                {/* todo: add offer function and messages*/}
                                 {/* <ButtonProduct label="OFFER"/>
                                 <ButtonProduct label="MESSAGE"/> */}
                             </>

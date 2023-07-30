@@ -3,6 +3,9 @@ import styled from "styled-components";
 const ButtonSection = styled.div`
 `
 
+const ButtonWrapper = styled.span`
+`
+
 const StyledButtonProduct = styled.button`
     display: block;
     width: 30%;
@@ -15,11 +18,14 @@ const StyledButtonProduct = styled.button`
     transition: all 0.3s;
     font-size: 15px;
     font-weight: bold;
-    &:hover {
+    &:hover:enabled {
         background-color: #e7e7e7;
         border: 1px solid black;
         cursor: pointer;
     }
+    &:disabled {
+        cursor: not-allowed
+    }
 `
 
-export { StyledButtonProduct, ButtonSection };
+export { StyledButtonProduct, ButtonWrapper, ButtonSection };

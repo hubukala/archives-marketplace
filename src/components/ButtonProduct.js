@@ -2,7 +2,7 @@ import { StyledButtonProduct } from "../styles/shared/buttons/ButtonProductStyle
 
 const ButtonProduct = (props) => {
     return (
-        <StyledButtonProduct onClick={props.handleOnClick}>{props.label}</StyledButtonProduct>
+        <StyledButtonProduct disabled={props.disabled} onClick={props.handleOnClick}>{props.label}</StyledButtonProduct>
     )
 }
 

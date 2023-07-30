@@ -7,7 +7,6 @@ const ProductSection = styled.div`
   text-align: center;
   padding: 1rem;
   margin: 1rem;
-  width: 100%;
 `
 
 const GallerySection = styled.div`
