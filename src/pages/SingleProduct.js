@@ -76,7 +76,7 @@ const SingleProduct = () => {
                                 <HoverCard width={280} shadow="md" disabled={isSignedIn} withArrow>
                                     <HoverCard.Target>
                                         <ButtonWrapper>
-                                            <ButtonProduct disabled={!isSignedIn} label="PURCHASE" handleOnClick={() => onClickPurchase(data.id)}/>
+                                            <ButtonProduct disabled={true} label="PURCHASE" handleOnClick={() => onClickPurchase(data.id)}/>
                                         </ButtonWrapper>
                                     </HoverCard.Target>
                                     <HoverCard.Dropdown>
