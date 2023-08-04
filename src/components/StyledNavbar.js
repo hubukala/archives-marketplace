@@ -6,6 +6,8 @@ import LoginPopup from "./LoginPopup";
 import SignUpPopup from "./SignUpPopup";
 import { ButtonPrimary } from "../styles/shared/buttons/ButtonPrimary";
 import { ButtonSecondary } from "../styles/shared/buttons/ButtonSecondary";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 const StyledNavbar = ({ showLogin, setShowLogin, showSignUp, setShowSignUp, isSignedIn, setIsSignedIn }) => {
   const navigate = useNavigate();
@@ -20,9 +22,14 @@ const StyledNavbar = ({ showLogin, setShowLogin, showSignUp, setShowSignUp, isSi
     setShowLogin(false)
   };
 
-  const signOut = () => {
-    setIsSignedIn(false)
-    navigate("/")
+  const logOut = async () => {
+    await signOut(auth).then(() => {
+      setIsSignedIn(false)
+      navigate('/')
+      console.log('signed out')
+    }).catch((error) => {
+      console.log(error)
+    })
   }
 
   return (
@@ -57,7 +64,7 @@ const StyledNavbar = ({ showLogin, setShowLogin, showSignUp, setShowSignUp, isSi
             <ButtonPrimary onClick={() => navigate("/profile")}>
               PROFILE
             </ButtonPrimary>
-            <ButtonSecondary onClick={signOut}>
+            <ButtonSecondary onClick={logOut}>
               SIGN OUT
             </ButtonSecondary>
           </ButtonsContainer>

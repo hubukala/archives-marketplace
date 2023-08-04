@@ -28,7 +28,8 @@ const SignUpPopup = ({ showSignUp, setShowSignUp, setShowLogin }) => {
         setData({ ...data, ...inputs })
     };
 
-    const submitData = () => {
+    const submitData = (e) => {
+        e.preventDefault()
         createUserWithEmailAndPassword(auth, data.email, data.password)
             .then((response) => {
                 console.log(response.user)
@@ -49,16 +50,16 @@ const SignUpPopup = ({ showSignUp, setShowSignUp, setShowLogin }) => {
                 <BackgroundContainer>
                     <LoginContainer>
                         <LoginWrapper>
-                            <LoginForm action="javascript:void(0);">
+                            <LoginForm>
                                 <h1>Sign up</h1>
                                 <Description>Create account to get full access to buying and selling.</Description>
-                                <LoginLabel htmlFor="">E-mail adress (username)</LoginLabel> <br />
+                                <LoginLabel htmlFor="EMAIL">E-mail adress (username)</LoginLabel> <br />
                                 <LoginInput 
                                     type="email" 
                                     name="email"
                                     onChange={event => handleInputs(event)}
                                 /> <br />
-                                <LoginLabel htmlFor="">Password</LoginLabel> <br />
+                                <LoginLabel htmlFor="PASSWORD">Password</LoginLabel> <br />
                                 <LoginInput 
                                     type="password" 
                                     name="password"
@@ -66,7 +67,7 @@ const SignUpPopup = ({ showSignUp, setShowSignUp, setShowLogin }) => {
                                 /> <br />
                                 <p>Already have an account? <ButtonLoginSmall onClick={() => {toggleModal(setShowSignUp); toggleModal(setShowLogin)}}>Log in</ButtonLoginSmall> </p>
                                 <ButtonsContainer>
-                                    <ButtonSecondary onClick={submitData}>SIGN UP</ButtonSecondary>
+                                    <ButtonSecondary onClick={(e) => submitData(e)}>SIGN UP</ButtonSecondary>
                                     <ButtonPrimary onClick={() => toggleModal(setShowSignUp)}>CLOSE</ButtonPrimary>
                                 </ButtonsContainer>
                             </LoginForm>

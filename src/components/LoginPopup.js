@@ -24,7 +24,8 @@ const LoginPopup = ({ showLogin, setShowLogin, isSignedIn, setIsSignedIn }) => {
         setData({ ...data, ...inputs })
     };
 
-    const submitData = () => {
+    const submitData = (e) => {
+        e.preventDefault()
         signInWithEmailAndPassword(auth, data.email, data.password)
     };
 
@@ -46,30 +47,30 @@ const LoginPopup = ({ showLogin, setShowLogin, isSignedIn, setIsSignedIn }) => {
                 setShowLogin(false)
             }
         })
-    }, []);
+    }, [setIsSignedIn, setShowLogin]);
     return (
         <div>
             { showLogin ?
                 <BackgroundContainer>
                     <LoginContainer showLogin={showLogin}>
                         <LoginWrapper>
-                            <LoginForm action="javascript:void(0);">
+                            <LoginForm>
                                 <h1>Sign in</h1>
                                 <Description>To post your item for sale or make a purchase.</Description>
-                                <LoginLabel htmlFor="">Username</LoginLabel> <br />
+                                <LoginLabel htmlFor="email">Username</LoginLabel> <br />
                                 <LoginInput 
                                     type="email" 
                                     name="email"
                                     onChange={event => handleInputs(event)}
                                 /> <br />
-                                <LoginLabel htmlFor="">Password</LoginLabel> <br />
+                                <LoginLabel htmlFor="password">Password</LoginLabel> <br />
                                 <LoginInput 
                                     type="password" 
                                     name="password"
                                     onChange={event => handleInputs(event)}
                                 /> <br />
                                 <ButtonsContainer>
-                                    <ButtonSecondary onClick={submitData}>LOGIN</ButtonSecondary>
+                                    <ButtonSecondary onClick={(e) => submitData(e)}>LOGIN</ButtonSecondary>
                                     <ButtonPrimary onClick={() => setShowLogin (prev => !prev)}>CLOSE</ButtonPrimary>
                                 </ButtonsContainer>
                             </LoginForm>
