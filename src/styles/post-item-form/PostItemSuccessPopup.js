@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const PostedItemContainer = styled.div`
     display: flex;
@@ -14,7 +14,7 @@ const PostedItemContainer = styled.div`
     margin-top: -200px;
     margin-left: -200px;
     min-width: 280px;
-`
+`;
 
 const PostedItemWrapper = styled.div`
     display: flex;
@@ -22,10 +22,10 @@ const PostedItemWrapper = styled.div`
     align-items: center;
     padding: 20px;
     text-align: center;
-`
+`;
 
 const ContentWrapper = styled.div`
     margin-bottom: 20px;
-`
+`;
 
 export { PostedItemContainer, PostedItemWrapper, ContentWrapper };

@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ImageFullScreen = styled.img`
-  width: 100%;
-`
+    width: 100%;
+`;
 
 export { ImageFullScreen };

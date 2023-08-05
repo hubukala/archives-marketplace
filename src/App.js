@@ -19,55 +19,88 @@ import CompletePurchase from './pages/CompletePurchase';
 import Message from './pages/Message';
 
 function App() {
-  const [showLogin, setShowLogin] = useState(false);
-  const [showSignUp, setShowSignUp] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState();
+    const [showLogin, setShowLogin] = useState(false);
+    const [showSignUp, setShowSignUp] = useState(false);
+    const [isSignedIn, setIsSignedIn] = useState();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsSignedIn(true)
-      }
-    })
-  })
-  
-  return (
-      <BrowserRouter>
-        <ScrollToTop>
-          <Routes>
-            <Route path="/" element=
-              {<SharedLayout
-                showLogin={showLogin}
-                setShowLogin={setShowLogin}
-                showSignUp={showSignUp}
-                setShowSignUp={setShowSignUp}
-                isSignedIn={isSignedIn}
-                setIsSignedIn={setIsSignedIn}
-              />}>
-              <Route index element={<Home />}/>
-              <Route path="/shop" element={<Shop />}/>
-              <Route path="/shop/:productId" element={<SingleProduct />}/>
-              <Route path="/shop/:productId/complete" element={<CompletePurchase />}/>
-              <Route path="/shop/:productId/message" element={<Message />}/>
-              <Route path="/shop/search/:inputId" element={<SearchResults/>}/>
-              <Route path="/signup" element=
-                {<SignUp
-                  showSignUp={showSignUp}
-                  setShowSignUp={setShowSignUp}
-                  setShowLogin={setShowLogin}
-                />}/>
-              <Route element={<ProtectedRoute setShowSignUp={setShowSignUp} isLoggedIn={isSignedIn} />}>
-                <Route path="/profile" element={<ProfilePage />}/>
-                <Route path="/profile/orders" element={<Orders />}/>
-                <Route path="/profile/my-items" element={<ProfilePage />}/>
-                <Route path="/sell" element={<Sell />}/>
-              </Route>
-              <Route path="*" element={<NotFound />}/>
-            </Route>
-          </Routes>
-        </ScrollToTop>
-      </BrowserRouter>
-  );
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setIsSignedIn(true);
+            }
+        });
+    });
+
+    return (
+        <BrowserRouter>
+            <ScrollToTop>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <SharedLayout
+                                showLogin={showLogin}
+                                setShowLogin={setShowLogin}
+                                showSignUp={showSignUp}
+                                setShowSignUp={setShowSignUp}
+                                isSignedIn={isSignedIn}
+                                setIsSignedIn={setIsSignedIn}
+                            />
+                        }
+                    >
+                        <Route index element={<Home />} />
+                        <Route path="/shop" element={<Shop />} />
+                        <Route
+                            path="/shop/:productId"
+                            element={<SingleProduct />}
+                        />
+                        <Route
+                            path="/shop/:productId/complete"
+                            element={<CompletePurchase />}
+                        />
+                        <Route
+                            path="/shop/:productId/message"
+                            element={<Message />}
+                        />
+                        <Route
+                            path="/shop/search/:inputId"
+                            element={<SearchResults />}
+                        />
+                        <Route
+                            path="/signup"
+                            element={
+                                <SignUp
+                                    showSignUp={showSignUp}
+                                    setShowSignUp={setShowSignUp}
+                                    setShowLogin={setShowLogin}
+                                />
+                            }
+                        />
+                        <Route
+                            element={
+                                <ProtectedRoute
+                                    setShowSignUp={setShowSignUp}
+                                    isLoggedIn={isSignedIn}
+                                />
+                            }
+                        >
+                            <Route path="/profile" element={<ProfilePage />} />
+                            <Route
+                                path="/profile/orders"
+                                element={<Orders />}
+                            />
+                            <Route
+                                path="/profile/my-items"
+                                element={<ProfilePage />}
+                            />
+                            <Route path="/sell" element={<Sell />} />
+                        </Route>
+                        <Route path="*" element={<NotFound />} />
+                    </Route>
+                </Routes>
+            </ScrollToTop>
+        </BrowserRouter>
+    );
 }
 
 export default App;

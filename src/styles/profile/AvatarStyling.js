@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const AvatarStyling = styled.img`
     border-radius: 50px;
@@ -9,6 +9,6 @@ const AvatarStyling = styled.img`
         cursor: pointer;
         opacity: 0.4;
     }
-`
+`;
 
 export { AvatarStyling };

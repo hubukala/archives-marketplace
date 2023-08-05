@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const LoginContainer = styled.div`
     background-color: #e8e8e8;
@@ -14,6 +14,6 @@ const LoginContainer = styled.div`
     margin-top: -200px;
     margin-left: -200px;
     min-width: 280px;
-`
+`;
 
 export { LoginContainer };

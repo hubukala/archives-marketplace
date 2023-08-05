@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ButtonLoginSmall = styled.button`
     border: none;
@@ -9,8 +9,8 @@ const ButtonLoginSmall = styled.button`
     transition: all 0.2s;
     text-decoration: underline;
     &:hover {
-        color:blue;
+        color: blue;
     }
-`
+`;
 
 export { ButtonLoginSmall };

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const BackgroundContainer = styled.div`
     position: fixed;
@@ -10,7 +10,7 @@ const BackgroundContainer = styled.div`
     bottom: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.75);
-`
+    background-color: rgba(0, 0, 0, 0.75);
+`;
 
 export { BackgroundContainer };

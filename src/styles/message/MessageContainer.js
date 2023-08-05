@@ -1,10 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const MessageContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 95%;
-    margin: 1rem;
-`
+    width: 100%;
+`;
 
 export { MessageContainer };

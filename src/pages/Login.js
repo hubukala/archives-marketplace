@@ -1,12 +1,12 @@
-import { Section } from "../styles/Section";
-import LoginPopup from "../components/LoginPopup";
+import { Section } from '../styles/Section';
+import LoginPopup from '../components/LoginPopup';
 
 const Login = () => {
-  return (
-    <Section>
-      <LoginPopup />
-    </Section>
-  );
+    return (
+        <Section>
+            <LoginPopup />
+        </Section>
+    );
 };
 
 export default Login;

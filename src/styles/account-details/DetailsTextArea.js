@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const DetailsTextArea = styled.textarea`
     display: block;
@@ -11,6 +11,6 @@ const DetailsTextArea = styled.textarea`
     font-family: 'Helvetica';
     font-style: italic;
     text-indent: 5px;
-`
+`;
 
 export { DetailsTextArea };

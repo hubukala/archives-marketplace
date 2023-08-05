@@ -1,15 +1,15 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from 'react-router-dom';
 
 const ProtectedRoute = ({ setShowSignUp, isLoggedIn }) => {
     const toggle = () => {
-        setShowSignUp(true)
+        setShowSignUp(true);
     };
 
     if (isLoggedIn === false) {
         toggle();
-        return (<Navigate to ="/" />);
+        return <Navigate to="/" />;
     } else {
-        return (<Outlet />);
+        return <Outlet />;
     }
 };
 

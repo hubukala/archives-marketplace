@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const DetailsLabel = styled.label`
     display: block;
@@ -6,6 +6,6 @@ const DetailsLabel = styled.label`
     text-indent: 5px;
     font-size: 12px;
     margin-bottom: 5px;
-`
+`;
 
 export { DetailsLabel };

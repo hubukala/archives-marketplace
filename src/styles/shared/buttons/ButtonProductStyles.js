@@ -1,18 +1,20 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ButtonSection = styled.div`
-`
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`;
 
-const ButtonWrapper = styled.span`
-`
+const ButtonWrapper = styled.span``;
 
 const StyledButtonProduct = styled.button`
     display: block;
-    width: 30%;
+    min-width: 300px;
     height: 40px;
-    margin: 0.6rem;
-    margin-left: auto;
-    margin-right: auto;
     background-color: white;
     border: 1px solid #c5c5c5;
     transition: all 0.3s;
@@ -24,8 +26,8 @@ const StyledButtonProduct = styled.button`
         cursor: pointer;
     }
     &:disabled {
-        cursor: not-allowed
+        cursor: not-allowed;
     }
-`
+`;
 
 export { StyledButtonProduct, ButtonWrapper, ButtonSection };

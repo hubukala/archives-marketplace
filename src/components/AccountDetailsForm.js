@@ -1,70 +1,69 @@
-import { useEffect, useState } from "react";
-import { ButtonSecondary } from "../styles/shared/buttons/ButtonSecondary";
-import { DetailsTextArea } from "../styles/account-details/DetailsTextArea";
-import { DetailsInput } from "../styles/account-details/DetailsInput";
-import { DetailsLabel } from "../styles/account-details/DetailsLabel.js";
-import { DetailsSection } from "../styles/account-details/DetailsSection";
-import { ButtonContainer } from "../styles/account-details/ButtonContainer";
-import { DetailsContainer } from "../styles/account-details/DetailsContainer";
-import { db } from "../firebaseConfig";
-import { setDoc, doc, getDoc } from "firebase/firestore";
-import { auth } from "../firebaseConfig";
+import { useEffect, useState } from 'react';
+import { ButtonSecondary } from '../styles/shared/buttons/ButtonSecondary';
+import { DetailsTextArea } from '../styles/account-details/DetailsTextArea';
+import { DetailsInput } from '../styles/account-details/DetailsInput';
+import { DetailsLabel } from '../styles/account-details/DetailsLabel.js';
+import { DetailsSection } from '../styles/account-details/DetailsSection';
+import { ButtonContainer } from '../styles/account-details/ButtonContainer';
+import { DetailsContainer } from '../styles/account-details/DetailsContainer';
+import { db } from '../firebaseConfig';
+import { setDoc, doc, getDoc } from 'firebase/firestore';
+import { auth } from '../firebaseConfig';
 
 const AccountDetailsForm = () => {
-
     const [data, setData] = useState({
-        fname: "",
-        lname: "",
-        bio: "",
-        city: "",
-        zipcode: "",
-        street: "",
-        suite: ""
-    })
+        fname: '',
+        lname: '',
+        bio: '',
+        city: '',
+        zipcode: '',
+        street: '',
+        suite: '',
+    });
 
     useEffect(() => {
         const fetchData = async () => {
-            const userId = auth.currentUser.uid
-            const docRef = doc(db, "users", userId)
+            const userId = auth.currentUser.uid;
+            const docRef = doc(db, 'users', userId);
             const docSnap = await getDoc(docRef);
-            console.log("Document data:", docSnap.data());
+            console.log('Document data:', docSnap.data());
             setData({
-                fname: docSnap.data().fname ?? "",
-                lname: docSnap.data().lname ?? "",
-                bio: docSnap.data().bio ?? "",
-                city: docSnap.data().city ?? "",
-                zipcode: docSnap.data().zipcode ?? "",
-                street: docSnap.data().street ?? "",
-                suite: docSnap.data().suite ?? ""
-            })
-        }
-        fetchData()
-    },[])
+                fname: docSnap.data().fname ?? '',
+                lname: docSnap.data().lname ?? '',
+                bio: docSnap.data().bio ?? '',
+                city: docSnap.data().city ?? '',
+                zipcode: docSnap.data().zipcode ?? '',
+                street: docSnap.data().street ?? '',
+                suite: docSnap.data().suite ?? '',
+            });
+        };
+        fetchData();
+    }, []);
 
     const handleAdd = async (e) => {
         e.preventDefault();
         try {
-            await setDoc(doc(db, "users", auth.currentUser.uid), {
+            await setDoc(doc(db, 'users', auth.currentUser.uid), {
                 ...data,
             });
-            alert("dane zaaktualizowane pomyślnie")
+            alert('dane zaaktualizowane pomyślnie');
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
-    }
-
-    const handleInputs = (event) => {
-        let inputs = { [event.target.name]: event.target.value }
-        
-        setData({ ...data, ...inputs })
     };
 
-    return(          
+    const handleInputs = (event) => {
+        let inputs = { [event.target.name]: event.target.value };
+
+        setData({ ...data, ...inputs });
+    };
+
+    return (
         <form action="">
             <DetailsSection>
                 <DetailsContainer>
                     <DetailsLabel>First name</DetailsLabel>
-                    <DetailsInput 
+                    <DetailsInput
                         name="fname"
                         type="text"
                         onChange={handleInputs}
@@ -73,7 +72,7 @@ const AccountDetailsForm = () => {
                 </DetailsContainer>
                 <DetailsContainer>
                     <DetailsLabel>Last name</DetailsLabel>
-                    <DetailsInput 
+                    <DetailsInput
                         name="lname"
                         type="text"
                         onChange={handleInputs}
@@ -84,7 +83,7 @@ const AccountDetailsForm = () => {
             <DetailsSection>
                 <DetailsContainer>
                     <DetailsLabel>Bio</DetailsLabel>
-                    <DetailsTextArea 
+                    <DetailsTextArea
                         name="bio"
                         type="text"
                         onChange={handleInputs}
@@ -95,7 +94,7 @@ const AccountDetailsForm = () => {
             <DetailsSection>
                 <DetailsContainer>
                     <DetailsLabel>City</DetailsLabel>
-                    <DetailsInput 
+                    <DetailsInput
                         name="city"
                         type="text"
                         onChange={handleInputs}
@@ -104,7 +103,7 @@ const AccountDetailsForm = () => {
                 </DetailsContainer>
                 <DetailsContainer>
                     <DetailsLabel>ZIP code</DetailsLabel>
-                    <DetailsInput 
+                    <DetailsInput
                         name="zipcode"
                         type="text"
                         onChange={handleInputs}
@@ -115,28 +114,30 @@ const AccountDetailsForm = () => {
             <DetailsSection>
                 <DetailsContainer>
                     <DetailsLabel>Street adress</DetailsLabel>
-                    <DetailsInput 
-                        name="street" 
-                        type="text" 
+                    <DetailsInput
+                        name="street"
+                        type="text"
                         onChange={handleInputs}
                         value={data.street}
                     />
                 </DetailsContainer>
                 <DetailsContainer>
                     <DetailsLabel>Apt/Suite</DetailsLabel>
-                    <DetailsInput 
-                        name="suite" 
-                        type="text" 
+                    <DetailsInput
+                        name="suite"
+                        type="text"
                         onChange={handleInputs}
                         value={data.suite}
                     />
                 </DetailsContainer>
             </DetailsSection>
             <ButtonContainer>
-                <ButtonSecondary type="submit" onClick={handleAdd}>SAVE</ButtonSecondary>
+                <ButtonSecondary type="submit" onClick={handleAdd}>
+                    SAVE
+                </ButtonSecondary>
             </ButtonContainer>
         </form>
-    )
-}
+    );
+};
 
 export default AccountDetailsForm;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const DetailsInput = styled.input`
     display: block;
@@ -11,7 +11,6 @@ const DetailsInput = styled.input`
     border-radius: 5px;
     color: black;
     font-family: 'Helvetica';
-`
-
+`;
 
 export { DetailsInput };

@@ -1,4 +1,8 @@
-import { SkChase, SkChaseDot, SkChaseContainer } from "../styles/animations/Chase";
+import {
+    SkChase,
+    SkChaseDot,
+    SkChaseContainer,
+} from '../styles/animations/Chase';
 
 const Loader = () => {
     return (
@@ -12,7 +16,7 @@ const Loader = () => {
                 <SkChaseDot></SkChaseDot>
             </SkChase>
         </SkChaseContainer>
-    )
-}
+    );
+};
 
 export default Loader;
