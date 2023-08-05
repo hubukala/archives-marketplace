@@ -8,6 +8,7 @@ const PurchaseCardContainer = styled.div`
   border: 1px solid grey;
   border-radius: 5px;
   font-size: 18px;
+  min-width: 500px;
 `
 
 const ElementContainer = styled.div`

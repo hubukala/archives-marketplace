@@ -52,6 +52,11 @@ const SingleProduct = () => {
         console.log("purchase button clicked")
         navigate(`/shop/${id}/complete`);
     }
+
+    const onClickMessage = (id) => {
+        navigate(`/shop/${id}/message`);
+    }
+
     return (
         <ProductSection>
             {data.image ? (
@@ -63,6 +68,8 @@ const SingleProduct = () => {
                         <h2>{data.title}</h2>
                         <ProductDetails>SIZE: {data.size}</ProductDetails>
                         <ProductDetails>CONDITION: {data.condition}</ProductDetails>
+                        {/* todo: add seller profile page */}
+                        {/* <ProductDetails>SELLER: john</ProductDetails> */}
                         <ProductDetails>{data.description}</ProductDetails>
                         <ProductPrice>$ {data.price ?? ""}</ProductPrice>
                     </ProductDescription>
@@ -73,10 +80,15 @@ const SingleProduct = () => {
                             </> :
                             <>
                             <Group position="center" display={'block'}>
-                                <HoverCard width={280} shadow="md" disabled={isSignedIn} withArrow>
+                                <HoverCard 
+                                    width={180} 
+                                    shadow="md" 
+                                    disabled={isSignedIn} 
+                                    withArrow
+                                >
                                     <HoverCard.Target>
                                         <ButtonWrapper>
-                                            <ButtonProduct disabled={true} label="PURCHASE" handleOnClick={() => onClickPurchase(data.id)}/>
+                                            <ButtonProduct disabled={!isSignedIn} label="PURCHASE" handleOnClick={() => onClickPurchase(data.id)}/>
                                         </ButtonWrapper>
                                     </HoverCard.Target>
                                     <HoverCard.Dropdown>
@@ -86,9 +98,9 @@ const SingleProduct = () => {
                                     </HoverCard.Dropdown>
                                 </HoverCard>
                             </Group>
+                            {isSignedIn ? <ButtonProduct label="MESSAGE" handleOnClick={() => onClickMessage(data.id)}/> : null}
                                 {/* todo: add offer function and messages*/}
-                                {/* <ButtonProduct label="OFFER"/>
-                                <ButtonProduct label="MESSAGE"/> */}
+                                {/* <ButtonProduct label="OFFER"/> */}
                             </>
                         }         
                     </ButtonSection>
