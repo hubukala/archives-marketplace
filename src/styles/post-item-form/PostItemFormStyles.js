@@ -15,6 +15,8 @@ const InputStyles = [
 const InputsSection = styled.div`
     display: flex;
     flex-direction: column;
+    margin-left: 24px;
+    margin-right: 24px;
 `;
 
 const InputMain = styled.input(InputStyles);
